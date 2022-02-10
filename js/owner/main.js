@@ -68,8 +68,7 @@ function limpiar(){
 	aviso(el.msgMas, control.mensajes.limpio);
 }
 function play(){
-	console.log('señal');
-	alert('new click cache 7');
+	el.teclado.focus();
 }
 
 // ::::::::::::::::: Procesos :::::::::::::::::
@@ -77,6 +76,7 @@ function iniciar(){
 	//Obtener elementos del html
 	el.btnPlay = document.getElementById('btnPlay');
 	el.btnPlay.addEventListener("click", play);
+	el.teclado = document.getElementById('teclado');
 }
 
 
