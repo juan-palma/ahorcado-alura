@@ -69,7 +69,7 @@ function limpiar(){
 }
 function play(){
 	console.log('señal');
-	alert('click');
+	alert('new click cache');
 }
 
 // ::::::::::::::::: Procesos :::::::::::::::::
