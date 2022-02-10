@@ -1,0 +1,598 @@
+/*
+	*Main CSS para implementacion directa de sitios.
+	
+	*La adaptacion del bolierplate y este codigo son esfuerzo del eqipo de ID.A libre
+	*con agradecimientos especiales a Juan Palma encargado de la implementacion.
+*/
+
+
+/* ==========================================================================
+	Parametros Globales
+========================================================================== */
+
+body,
+html{
+	width: 100%;
+	min-height: 100vh;
+}
+#fondo_body{
+	background : #292D27;
+	background-size: cover;
+	background-attachment: fixed;
+}
+body, button, input, select, textarea{
+	font-family: 'Lato', Arial, Helvetica, sans-serif;
+	color: #56504a;
+	letter-spacing: 0.05em;
+}
+
+div, label{
+	width: auto;
+	height: auto;
+	display: block;
+	position: relative;
+}
+main, footer, header, aside, section, article, figure, figcaption, q, cite, blockquote{
+	display: block;
+	position: relative;
+}
+
+#vCard{
+	width: 1px;
+	height: 1px;
+	clip: rect(1px 1px 1px 1px);
+	position: absolute;
+	opacity: 0.1;
+	overflow: hidden;
+}
+
+	
+@-ms-viewport {
+	width: device-width;
+	zoom: 1.0;
+	max-zoom: 1.0;
+}
+
+@viewport {
+	width: device-width;
+	zoom: 1.0;
+	max-zoom: 1.0;
+}
+
+
+
+
+
+
+/* ==========================================================================
+	Codigo de ejemplos !!
+========================================================================== */
+/* Bordes Redondeados */
+/*
+	border-radius : 6px;
+	-moz-border-radius : 6px;
+	-webkit-border-radius : 6px;
+*/
+
+/* Sombras de objetos */
+/*
+	box-shadow : 1px 3px 4px rgba(0, 29, 40, 0.18);
+	filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=1, OffY=3, Color='#001D28') ;
+*/
+	
+/* Animaciones de trancicion */
+/*
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	-ms-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+*/
+
+/* comportamiento de borde y padding en objetos a su interior o exterior */
+/*
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+*/
+
+	
+
+
+
+
+/* ==========================================================================
+	Estilos visiales para la Agencia o el Desarrollador
+========================================================================== */
+#idalibreLogo {
+	position: absolute;
+	top: 16px;
+}
+	#idalibreLogo a{
+		display: block;
+		position: relative;
+	}
+		#idalibreLogo a img{
+			width: 58px;
+			height: 58px;
+			object-fit: contain;
+			object-position: center;
+		}
+		
+#juanFooter {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0.6rem 12%;
+    bottom: 0px;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #45413c;
+    font-weight: 300;
+}
+	#juanFooter a {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		text-decoration: none;
+		color: #90502f;
+		font-weight: 300;
+	}
+		#juanFooter img {
+			width: 48px;
+			height: 48px;
+			object-fit: contain;
+			object-position: center;
+		}
+		span.juanpalma {
+			white-space: nowrap;
+			display: inline-flex;
+			margin: 0 2px;
+		}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+	Estilos visiales para elementos GENERALES
+========================================================================== */
+:root{
+	--colorBackDark: #282b30;
+	--colorBackColor: #d05751;
+	--colorPrincipal: yellowgreen;
+	--margenAncho: 76%;
+	--margenPadding: 2em;
+}
+.desaparece{
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	opacity: 0.1;
+	clip: rect(1px 1px 1px 1px);
+	position: absolute;
+}
+.ocultar{
+	display: none !important;
+}
+.opacidad0{
+	opacity: 0 !important;
+}
+.opacidad1{
+	opacity: 1 !important;
+}
+.animar{
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+h1{
+	width: 100%;
+	font-size: 250%;
+    text-align: left;
+    color: var(--colorPrincipal);
+    margin-bottom: 0.2em;
+}
+h2{
+	font-size: 140%;
+    font-weight: 400;
+	color: var(--colorPrincipal);
+	margin-bottom: 22px;
+}
+.margen{
+	width: var(--margenAncho);
+    padding: var(--margenPadding);
+    box-sizing: border-box;
+}
+
+input[type="text"]{
+	width: 100%;
+    height: 49px;
+    margin-bottom: 3em;
+}
+input[type="button"]{
+	margin-left: 1em;
+}
+input[type="button"]:hover{
+	background-color: var(--colorPrincipal);
+}
+
+
+/* Estrellas */
+#estrellas{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.estrella_contenedor{
+	--estrellaTamaño: 8px;
+	width: var(--estrellaTamaño);
+	height: var(--estrellaTamaño);
+	position: absolute;
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.estrella{
+	display: flex;
+	justify-content: center;
+}
+.estrella,
+.estrella::before,
+.estrella::after{
+    width: 0;
+    border-color: transparent transparent #fff transparent;
+    border-width: 0 calc(var(--estrellaTamaño)*0.5) calc(var(--estrellaTamaño)*0.25) calc(var(--estrellaTamaño)*0.5);
+    border-style: solid;
+    position: absolute;
+    transform: rotate(180deg);
+    box-shadow: 0 0 19px rgb(255 255 255 / 100%);
+}
+
+.estrella::before{
+    content: '';
+    transform: rotate(76deg);
+    box-shadow: 0 0 12px rgb(255 255 255 / 100%);
+}
+
+.estrella::after{
+    content: '';
+    transform: rotate(-76deg);
+    box-shadow: 0 0 6px rgb(255 255 255 / 100%);
+}
+
+
+@keyframes flotar1 {
+	0% {
+		transform: translateY(5px) translateX(2px) scale(.98);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(-5px) translateX(-3px) scale(1);
+		opacity: 0.8;
+	}
+}
+.flotar1{
+	animation: flotar1 2s infinite ease-in-out alternate;
+}
+
+@keyframes flotar2 {
+	0% {
+		transform: translateY(-5px) translateX(7px) scale(.94);
+		opacity: 0.5;
+	}
+	50% {
+		transform: translateY(3px) translateX(-9px) scale(.94);
+		opacity: 0.6;
+	}
+	100% {
+		transform: translateY(20px) translateX(13px) scale(0.6);
+		opacity: 1;
+	}
+}
+.flotar2{
+	animation: flotar2 3s infinite ease-in-out alternate;
+}
+
+@keyframes flotar3 {
+	0% {
+		transform: translateY(8px) scale(.9);
+		opacity: 0.8;
+	}
+	100% {
+		transform: translateY(-8px) scale(1.2);
+		opacity: 0.5;
+	}
+}
+.flotar3{
+	animation: flotar3 4s infinite ease-in-out alternate;
+}
+
+@keyframes flotar4 {
+	0% {
+		transform: translateY(-45px) translateX(8px) scale(1);
+		opacity: 0.3;
+	}
+	60% {
+		transform: translateY(-60px) translateX(12px) scale(1);
+		opacity: 0.4;
+	}
+	100% {
+		transform: translateY(18px) translateX(-12px) scale(1.1);
+		opacity: 1;
+	}
+}
+.flotar4{
+	animation: flotar4 8s infinite ease-in-out alternate;
+}
+
+@keyframes flotar5 {
+	0% {
+		opacity: 0.3;
+	}
+	10% {
+		opacity: 0.6;
+	}
+	20% {
+		opacity: 0.4;
+	}
+	30% {
+		opacity: 0.9;
+	}
+	40% {
+		opacity: 0.2;
+	}
+	50% {
+		opacity: 1;
+	}
+	60% {
+		opacity: 0.9;
+	}
+	70% {
+		opacity: 0.3;
+	}
+	100% {
+		opacity: 0.3;
+	}
+}
+.flotar5{
+	animation: flotar5 4s infinite ease-in-out alternate;
+}
+
+@keyframes flotar6 {
+	0% {
+		opacity: 0.1;
+	}
+	50% {
+		opacity: 1;
+	}
+	60% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0.1;
+	}
+}
+.flotar6{
+	animation: flotar6 4s infinite ease-in-out alternate;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+/* ==========================================================================
+	Estilos visiales del sitio.
+========================================================================== */
+
+#mainContainer{
+	width: 100%;
+	min-height:100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+	#titulo, #titulo h1{
+		margin-bottom: 0px;
+		padding-bottom: 0px;
+	}
+	#titulo{
+		margin-bottom: -1.5em;
+	}
+	
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+	Media Queries
+========================================================================== */
+@media only screen and (max-width: 1600px) {
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+	Media Queries
+========================================================================== */
+@media only screen and (max-width: 1280px) {
+
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+	Media Queries
+========================================================================== */
+@media only screen and (max-width: 1024px) {
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+	Media Queries
+========================================================================== */
+@media only screen and (max-width: 846px) {
+	:root{
+		--margenAncho: 90%;
+		--margenPadding: 2em;
+	}
+	h1 {
+	    font-size: 9vw;
+	}
+	#msgInput, #msgMas{
+		font-size: 66%;
+	}
+	#titulo {
+	    margin-bottom: -1.5em;
+	    margin-top: 44px;
+	}
+	#mainContainer{
+		flex-direction: column;
+		flex-wrap: wrap;
+		overflow: hidden;
+	}
+		#entradas, #salidas {
+		    width: 100%;
+		    height: auto;
+		    flex: 1 0 0;
+		}
+		#salidas{
+			flex: none;
+		}
+			#salida{
+				min-height: 27vh;
+				padding: 4rem 0;
+			}
+			#masOpciones {
+			    margin-top: 0px;
+			    padding-top: 0px;
+			}
+			#candado{
+				position: absolute;
+			    transform: scale(0.6);
+			    top: -24vh;
+			    left: 0vw;
+			}
+				#candado svg g g:first-child g path {
+				    fill: #fff;
+				}
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+	Media Queries
+========================================================================== */
+@media only screen and (max-width: 640px) {
+	
+}
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+	Media Queries
+========================================================================== */
+@media only screen and (max-width: 480px) {
+	#candado{
+	    transform: scale(0.5);
+	    top: -10vh;
+	    left: -26vw;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+	Media Queries
+========================================================================== */
+@media only screen and (max-width: 360px) {
+	
+}
+
+
+
+
+
+
+
+
+
+
