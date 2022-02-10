@@ -67,13 +67,17 @@ function limpiar(){
 	candadoClose();
 	aviso(el.msgMas, control.mensajes.limpio);
 }
-
+function play(){
+	console.log('señal');
+}
 
 // ::::::::::::::::: Procesos :::::::::::::::::
 function iniciar(){
 	//Obtener elementos del html
-	
+	el.btnPlay = document.getElementById('btnPlay');
+	el.btnPlay.addEventListener("click", play);
 }
+
 
 
 // iniciar la solicitud de los modulos y la ejecucion inicial del sistema.
@@ -83,11 +87,3 @@ requirejs.config({
     paths: { a: '../animaciones', l: '../librerias' }
 });
 requirejs(['validaciones', 'alertas'], iniciar);
-
-
-
-
-
-
-
-

@@ -208,7 +208,12 @@ h2{
 	color: var(--colorPrincipal);
 	margin-bottom: 22px;
 }
-.margen{
+.margenL{
+	width: var(--margenAncho);
+    padding: var(--margenPadding);
+    box-sizing: border-box;
+}
+.margenG{
 	width: var(--margenAncho);
     padding: var(--margenPadding);
     box-sizing: border-box;
@@ -405,7 +410,7 @@ input[type="button"]:hover{
 	Estilos visiales del sitio.
 ========================================================================== */
 
-#mainContainer{
+#container0{
 	width: 100%;
 	min-height:100vh;
 	display: flex;
