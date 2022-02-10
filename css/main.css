@@ -102,11 +102,10 @@ main, footer, header, aside, section, article, figure, figcaption, q, cite, bloc
 
 
 /* ==========================================================================
-	Estilos visiales para la Agencia o el Desarrollador
+	Estilos visuales para la Agencia o el Desarrollador
 ========================================================================== */
 #idalibreLogo {
-	position: absolute;
-	top: 16px;
+	position: relative;
 }
 	#idalibreLogo a{
 		display: block;
@@ -122,37 +121,43 @@ main, footer, header, aside, section, article, figure, figcaption, q, cite, bloc
 #juanFooter {
     width: 100%;
     height: auto;
-    position: absolute;
+    position: relative;
     display: flex;
-    flex-direction: row;
+	flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 0.6rem 12%;
     bottom: 0px;
     box-sizing: border-box;
     background-color: #fff;
-    color: #45413c;
-    font-weight: 300;
 }
-	#juanFooter a {
+	#juanFooter .interno{
 		display: flex;
-		justify-content: flex-start;
+		flex-direction: row;
+		justify-content: center;
 		align-items: center;
-		text-decoration: none;
-		color: #90502f;
-		font-weight: 300;
+		color: #45413c;
+    	font-weight: 300;
 	}
-		#juanFooter img {
-			width: 48px;
-			height: 48px;
-			object-fit: contain;
-			object-position: center;
+		#juanFooter a {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			text-decoration: none;
+			color: #90502f;
+			font-weight: 300;
 		}
-		span.juanpalma {
-			white-space: nowrap;
-			display: inline-flex;
-			margin: 0 2px;
-		}
+			#juanFooter img {
+				width: 48px;
+				height: 48px;
+				object-fit: contain;
+				object-position: center;
+			}
+			span.juanpalma {
+				white-space: nowrap;
+				display: inline-flex;
+				margin: 0 2px;
+			}
 
 
 
@@ -197,10 +202,10 @@ main, footer, header, aside, section, article, figure, figcaption, q, cite, bloc
 }
 h1{
 	width: 100%;
-	font-size: 250%;
+	font-size: 150%;
     text-align: left;
+	line-height: 1;
     color: var(--colorPrincipal);
-    margin-bottom: 0.2em;
 }
 h2{
 	font-size: 140%;
@@ -210,7 +215,7 @@ h2{
 }
 .margenL{
 	width: var(--margenAncho);
-    padding: var(--margenPadding);
+    padding: 0 var(--margenPadding);
     box-sizing: border-box;
 }
 .margenG{
@@ -414,16 +419,33 @@ input[type="button"]:hover{
 	width: 100%;
 	min-height:100vh;
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	justify-content: space-between;
 	align-items: center;
 }
-	#titulo, #titulo h1{
-		margin-bottom: 0px;
-		padding-bottom: 0px;
-	}
+	
 	#titulo{
-		margin-bottom: -1.5em;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
 	}
+		#titulo h1{
+			margin-left: 2rem;
+		}
+			h1 > span:nth-child(2) {
+				color: aquamarine;
+				font-size: 88%;
+			}
+			h1 > span:nth-child(4) {
+				color: rgba(255,255,255,0.5);
+				font-size: 60%;
+				font-weight: 300;
+				top: -4px;
+    			position: relative;
+			}
+			
 	
 				
 
@@ -502,43 +524,7 @@ input[type="button"]:hover{
 	h1 {
 	    font-size: 9vw;
 	}
-	#msgInput, #msgMas{
-		font-size: 66%;
-	}
-	#titulo {
-	    margin-bottom: -1.5em;
-	    margin-top: 44px;
-	}
-	#mainContainer{
-		flex-direction: column;
-		flex-wrap: wrap;
-		overflow: hidden;
-	}
-		#entradas, #salidas {
-		    width: 100%;
-		    height: auto;
-		    flex: 1 0 0;
-		}
-		#salidas{
-			flex: none;
-		}
-			#salida{
-				min-height: 27vh;
-				padding: 4rem 0;
-			}
-			#masOpciones {
-			    margin-top: 0px;
-			    padding-top: 0px;
-			}
-			#candado{
-				position: absolute;
-			    transform: scale(0.6);
-			    top: -24vh;
-			    left: 0vw;
-			}
-				#candado svg g g:first-child g path {
-				    fill: #fff;
-				}
+	
 }
 
 
@@ -569,11 +555,7 @@ input[type="button"]:hover{
 	Media Queries
 ========================================================================== */
 @media only screen and (max-width: 480px) {
-	#candado{
-	    transform: scale(0.5);
-	    top: -10vh;
-	    left: -26vw;
-	}
+	
 }
 
 
