@@ -69,6 +69,7 @@ function limpiar(){
 }
 function play(){
 	console.log('señal');
+	alert('click');
 }
 
 // ::::::::::::::::: Procesos :::::::::::::::::
@@ -77,6 +78,7 @@ function iniciar(){
 	el.btnPlay = document.getElementById('btnPlay');
 	el.btnPlay.addEventListener("click", play);
 }
+
 
 
 
