@@ -74,9 +74,9 @@ function play(){
 // ::::::::::::::::: Procesos :::::::::::::::::
 function iniciar(){
 	//Obtener elementos del html
-	el.btnPlay = document.getElementById('btnPlay');
-	el.btnPlay.addEventListener("click", play);
-	el.teclado = document.getElementById('teclado');
+	//el.btnPlay = document.getElementById('btnPlay');
+	//el.btnPlay.addEventListener("click", play);
+	//el.teclado = document.getElementById('teclado');
 }
 
 
@@ -89,3 +89,20 @@ requirejs.config({
     paths: { a: '../animaciones', l: '../librerias' }
 });
 requirejs(['validaciones', 'alertas'], iniciar);
+
+
+function teclado(e){
+	console.log(e);
+	console.log(e.type);
+	document.getElementById('btnPlay').textContent = e.key;
+}
+function activeTeclado(){
+	document.onkeydown = teclado;
+	//document.onkeyup = teclado;
+}
+
+if (document.readyState === "complete" || document.readyState === "interactive") {
+	activeTeclado();
+} else {
+	document.addEventListener("DOMContentLoaded", activeTeclado);
+}
