@@ -445,7 +445,9 @@ input[type="button"]:hover{
 				top: -4px;
     			position: relative;
 			}
-			
+			#teclado{
+				display:none
+			}
 	
 				
 
