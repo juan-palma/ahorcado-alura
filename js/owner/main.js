@@ -74,9 +74,9 @@ function play(){
 // ::::::::::::::::: Procesos :::::::::::::::::
 function iniciar(){
 	//Obtener elementos del html
-	//el.btnPlay = document.getElementById('btnPlay');
-	//el.btnPlay.addEventListener("click", play);
-	//el.teclado = document.getElementById('teclado');
+	el.btnPlay = document.getElementById('btnPlay');
+	el.btnPlay.addEventListener("click", play);
+	el.teclado = document.getElementById('teclado');
 }
 
 

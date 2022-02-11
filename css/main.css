@@ -445,9 +445,15 @@ input[type="button"]:hover{
 				top: -4px;
     			position: relative;
 			}
-			#teclado{
-				display:none
+			#entrada{
+				position: absolute;
+				top: 0px;
+				left:0px;
+				z-index: 0;
 			}
+				#teclado{
+					
+				}
 	
 				
 
