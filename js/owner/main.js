@@ -98,7 +98,7 @@ function teclado(e){
 }
 function activeTeclado(){
 	document.onkeydown = teclado;
-	//document.onkeyup = teclado;
+	document.onkeyup = teclado;
 }
 
 if (document.readyState === "complete" || document.readyState === "interactive") {
