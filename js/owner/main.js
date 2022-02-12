@@ -52,7 +52,11 @@ function teclado(e){
 }
 
 // ::::::::::::::::: Procesos :::::::::::::::::
-function activeTeclado(){
+function onTeclado(){
+	document.onkeydown = teclado;
+	document.onkeyup = teclado;
+}
+function offTeclado(){
 	document.onkeydown = teclado;
 	document.onkeyup = teclado;
 }
@@ -65,8 +69,6 @@ function iniciar(){
 		if(el.touch = Modernizr.touchevents){
 			btnPlayEvent = "touchend";
 		}
-	} else{
-		activeTeclado();
 	}
 
 	//Obtener elementos del html
