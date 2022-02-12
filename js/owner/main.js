@@ -85,7 +85,7 @@ function iniciar(){
 	// 		});
 	// 	}
 	// }
-	console.log(navigator.userAgent);
+	console.log(/Mobile/i.test(navigator.userAgent));
 
 	//Obtener elementos del html
 	el.btnPlay = document.getElementById('btnPlay');
