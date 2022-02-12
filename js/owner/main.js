@@ -40,8 +40,8 @@ function agregarPalabra(){
 function limpiar(){
 	
 }
-function play(){
-	console.log(el.mobile);
+function play(e){
+	console.log(e);
 }
 
 function teclado(e){
