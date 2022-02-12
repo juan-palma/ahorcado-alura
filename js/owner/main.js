@@ -92,7 +92,7 @@ function iniciar(){
 	//Obtener elementos del html
 	el.btnPlay = document.getElementById('btnPlay');
 	el.btnPlay.addEventListener("click", play);
-	el.btnPlay.touchend("click", touch);
+	el.btnPlay.addEventListener("touchend", touch);
 	el.teclado = document.getElementById('teclado');
 }
 
