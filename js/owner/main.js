@@ -75,6 +75,7 @@ function play(){
 function iniciar(){
 	//habilitar funciones para moviles:
 	if(el.mobile = /Mobile/i.test(navigator.userAgent)){
+		console.log(navigator.userAgent);
 		console.log('señal');
 		// if(Modernizr.idatouch ? ida_sino = 'js/owner/touch.js' : ''){
 		// 	delete Element.NativeEvents['click'];
