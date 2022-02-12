@@ -34,65 +34,44 @@ var control = {
 
 // ::::::::::::::::: Funciones :::::::::::::::::
 //Aplicacion de la encriptacion/desencriptacion
-function procesar(){
-	if(!validar(el.input)){return false;}
-	const proceso = this.value;
-	control[proceso].animacion();
-	el.salida.textContent = el.input.value.trim().replace(control[proceso].busqueda, function(x){
-		return control[proceso].valores[x];
-	});
-	aviso(el.msgInput, control[proceso].mensaje, "cyan");
+function agregarPalabra(){
 }
 //Funcion de copia de texto
-function copiar(){
-	if(el.salida.textContent.trim() === ""){return false;}
-	el.oculto.disabled = false;
-	el.oculto.value = el.salida.textContent;
-	el.oculto.select();
-	document.execCommand("copy");
-	window.getSelection().removeAllRanges();
-	el.salida.disabled = true;
-	aviso(el.msgMas, control.mensajes.copiado);
-}
-function pegar(){
-	if(el.salida.textContent.trim() === ""){return false;}
-	el.input.value = el.salida.textContent;
-	aviso(el.msgMas, control.mensajes.pegado);
-}
 function limpiar(){
-	el.form.reset();
-	el.salida.textContent = "";
-	avisoClear(el.msgInput);
-	avisoClear(el.msgMas);
-	candadoClose();
-	aviso(el.msgMas, control.mensajes.limpio);
+	
 }
 function play(){
-	el.teclado.focus();
+	console.log(el.mobile);
 }
 
-function touch(e){
-	console.log('conTouch');
+function teclado(e){
+	console.log(e);
+	console.log(e.type);
+	//if(!validar(el.input)){return false;}
+	document.getElementById('btnPlay').textContent = e.key;
 }
 
 // ::::::::::::::::: Procesos :::::::::::::::::
+function activeTeclado(){
+	document.onkeydown = teclado;
+	document.onkeyup = teclado;
+}
 function iniciar(){
+	//variables de valores predefinidos que pueden cambiar con condicones posteriores del codigo
+	let btnPlayEvent = "click";
+
 	//habilitar funciones para moviles:
-	// if(el.mobile = /Mobile/i.test(navigator.userAgent)){
-	// 	if(Modernizr.idatouch ? ida_sino = 'js/owner/touch.js' : ''){
-	// 		delete Element.NativeEvents['click'];
-	// 		Asset.javascript(ida_sino, {
-	// 			onLoad: function(){
-	// 				ida_ini_touch();
-	// 			}
-	// 		});
-	// 	}
-	// }
+	if(el.mobile = /Mobile/i.test(navigator.userAgent)){
+		if(el.touch = Modernizr.touchevents){
+			btnPlayEvent = "touchend";
+		}
+	} else{
+		activeTeclado();
+	}
 
 	//Obtener elementos del html
 	el.btnPlay = document.getElementById('btnPlay');
-	el.btnPlay.addEventListener("click", play);
-	el.btnPlay.addEventListener("touchend", touch);
+	el.btnPlay.addEventListener(btnPlayEvent, play);
 	el.teclado = document.getElementById('teclado');
 }
 
@@ -105,21 +84,10 @@ requirejs.config({
     baseUrl: 'js/owner',
     paths: { a: '../animaciones', l: '../librerias' }
 });
-requirejs(['l/modernizr', 'l/mootools-core', 'validaciones', 'alertas'], iniciar);
+requirejs(['l/modernizr', 'validaciones', 'alertas'], iniciar);
 
-
-function teclado(e){
-	console.log(e);
-	console.log(e.type);
-	document.getElementById('btnPlay').textContent = e.key;
-}
-function activeTeclado(){
-	document.onkeydown = teclado;
-	document.onkeyup = teclado;
-}
-
-if (document.readyState === "complete" || document.readyState === "interactive") {
-	activeTeclado();
-} else {
-	document.addEventListener("DOMContentLoaded", activeTeclado);
-}
+// if (document.readyState === "complete" || document.readyState === "interactive") {
+// 	activeTeclado();
+// } else {
+// 	document.addEventListener("DOMContentLoaded", activeTeclado);
+// }
