@@ -86,6 +86,7 @@ function iniciar(){
 		// }
 	}
 	console.log(el.mobile);
+	console.log('señal2');
 
 	//Obtener elementos del html
 	el.btnPlay = document.getElementById('btnPlay');
