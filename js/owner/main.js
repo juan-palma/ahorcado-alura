@@ -71,27 +71,28 @@ function play(){
 	el.teclado.focus();
 }
 
+function touch(e){
+	console.log('conTouch');
+}
+
 // ::::::::::::::::: Procesos :::::::::::::::::
 function iniciar(){
 	//habilitar funciones para moviles:
-	if(el.mobile = /Mobile/i.test(navigator.userAgent)){
-		console.log(navigator.userAgent);
-		console.log('señal');
-		// if(Modernizr.idatouch ? ida_sino = 'js/owner/touch.js' : ''){
-		// 	delete Element.NativeEvents['click'];
-		// 	Asset.javascript(ida_sino, {
-		// 		onLoad: function(){
-		// 			ida_ini_touch();
-		// 		}
-		// 	});
-		// }
-	}
-	console.log(el.mobile);
-	console.log('señal2');
+	// if(el.mobile = /Mobile/i.test(navigator.userAgent)){
+	// 	if(Modernizr.idatouch ? ida_sino = 'js/owner/touch.js' : ''){
+	// 		delete Element.NativeEvents['click'];
+	// 		Asset.javascript(ida_sino, {
+	// 			onLoad: function(){
+	// 				ida_ini_touch();
+	// 			}
+	// 		});
+	// 	}
+	// }
 
 	//Obtener elementos del html
 	el.btnPlay = document.getElementById('btnPlay');
 	el.btnPlay.addEventListener("click", play);
+	el.btnPlay.touchend("click", touch);
 	el.teclado = document.getElementById('teclado');
 }
 
@@ -104,7 +105,7 @@ requirejs.config({
     baseUrl: 'js/owner',
     paths: { a: '../animaciones', l: '../librerias' }
 });
-requirejs(['validaciones', 'alertas'], iniciar);
+requirejs(['l/modernizr', 'l/mootools-core', 'validaciones', 'alertas'], iniciar);
 
 
 function teclado(e){
