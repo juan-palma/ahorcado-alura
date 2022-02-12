@@ -415,6 +415,19 @@ input[type="button"]:hover{
 	Estilos visiales del sitio.
 ========================================================================== */
 
+#teclado{
+	width: 100%;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: auto;
+	left: 0px;
+	bottom: 0px;
+	z-index: 9999;
+}
+
 #container0{
 	width: 100%;
 	min-height:100vh;
@@ -446,18 +459,15 @@ input[type="button"]:hover{
 				top: -4px;
     			position: relative;
 			}
-			#entrada{
-				width:100%;
-				height:100vh;
-				position: absolute;
-				top: 0px;
-				left:0px;
-				z-index: 0;
-			}
-				#teclado{
-					width: 100%;
-					height: 100%;
-				}
+
+#animaciones{
+	width:100%;
+	height:100vh;
+	position: fixed;
+	top: 0px;
+	left:0px;
+	z-index: 0;
+}
 	
 				
 
