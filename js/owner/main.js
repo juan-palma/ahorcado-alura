@@ -74,18 +74,18 @@ function play(){
 // ::::::::::::::::: Procesos :::::::::::::::::
 function iniciar(){
 	//habilitar funciones para moviles:
-	//if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-	// if(!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ){	
-	// 	if(Modernizr.idatouch ? ida_sino = 'js/owner/touch.js' : ''){
-	// 		delete Element.NativeEvents['click'];
-	// 		Asset.javascript(ida_sino, {
-	// 			onLoad: function(){
-	// 				ida_ini_touch();
-	// 			}
-	// 		});
-	// 	}
-	// }
-	console.log(/Mobile/i.test(navigator.userAgent));
+	if(el.mobile = /Mobile/i.test(navigator.userAgent)){
+		console.log('señal');
+		// if(Modernizr.idatouch ? ida_sino = 'js/owner/touch.js' : ''){
+		// 	delete Element.NativeEvents['click'];
+		// 	Asset.javascript(ida_sino, {
+		// 		onLoad: function(){
+		// 			ida_ini_touch();
+		// 		}
+		// 	});
+		// }
+	}
+	console.log(el.mobile);
 
 	//Obtener elementos del html
 	el.btnPlay = document.getElementById('btnPlay');
