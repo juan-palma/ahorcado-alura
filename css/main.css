@@ -399,7 +399,7 @@ input[type="button"]:hover{
 
 
 /* Estilos para el boton de navegacion */
-.navicon { position: absolute; left: 0px; top: 10vh; }
+.navicon { position: absolute; left: 0px; top: 16vh; }
 #nav-toggle { position: absolute; right: 20px; top: 0; }
 #nav-toggle { cursor: pointer; padding: 10px 30px 16px 0px; }
 #nav-toggle span, #nav-toggle span:before, #nav-toggle span:after { cursor: pointer; border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px; -o-border-radius: 1px; height: 3px; width: 30px; background: rgba(255,255,255,0.4); position: absolute; display: block; content: ''; }
@@ -452,6 +452,7 @@ input[type="button"]:hover{
 	justify-content: space-between;
 	align-items: center;
 	z-index: 10;
+	overflow: hidden;
 }
 	#container1{
 		width: 100%;
@@ -477,6 +478,17 @@ input[type="button"]:hover{
 		#settings.show{
 			right: 0%;
 		}
+			#btnSalirBox {
+				position: absolute;
+				left: -56px;
+				top: 16vh;
+				color: white;
+				cursor: pointer;
+				display: none;
+			}
+			#btnSalirBox:hover{
+				color: chartreuse;
+			}
 			#settings label {
 				color: white;
 				font-size: 124%;
@@ -649,6 +661,28 @@ input[type="button"]:hover{
 					top: -4px;
 					position: relative;
 				}
+		
+		#visor {
+			width: 100%;
+			height: 80%;
+			top: 8%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+			#btnPlay{
+				display: block;
+				position: absolute;
+				background-color: chartreuse;
+				padding: 10px 40px;
+				color: black;
+				border-radius: 8px;
+				cursor: pointer;
+				bottom: 8%;
+			}
+			#btnPlay:hover{
+				background-color: aquamarine;
+			}
 
 #canvas{
 	width:100%;
@@ -697,21 +731,70 @@ input[type="button"]:hover{
 	}
 		#msnGano{
 			position: absolute;
+			width: 50%;
+			margin-top: -12%;
 		}
 			#msnGano img{
+				width: 100%;
 				mix-blend-mode: screen;
 			}
 		#msnPerdio{
 			position: absolute;
+			width: 50%;
+			margin-top: -12%;
 		}
 			#msnPerdio img{
+				width: 100%;
 				mix-blend-mode: screen;
+				transform: scale(30.5);
+				opacity: 0;
+
+				-webkit-transition: all 0.2s ease-in-out;
+				-moz-transition: all 0.2s ease-in-out;
+				-o-transition: all 0.2s ease-in-out;
+				-ms-transition: all 0.2s ease-in-out;
+				transition: all 0.2s ease-in-out;
+			}
+			#msnPerdio img.activo {
+				transform: scale(1);
+				opacity: 1;
 			}
 	
 				
 
 
-
+#teclado {
+	width: 100%;
+	height: 20vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: auto;
+	left: 0px;
+	bottom: 0px;
+	z-index: 9999;
+	background-color: #343337;
+}
+	#teclas {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		flex-wrap: wrap;
+	}
+		#teclas .tecla {
+			width: 8.33%;
+			height: 11vw;
+			background-color: #666;
+			margin: 1vw 0.8%;
+			color: white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 5px
+		}
 
 
 
@@ -819,7 +902,20 @@ input[type="button"]:hover{
 	Media Queries
 ========================================================================== */
 @media only screen and (max-width: 480px) {
-	
+	#settings{
+		padding: 6%;
+	}
+	#agregarBox{
+		padding: 1rem;
+		font-size: 85%;
+	}
+	.togglehide.activo{
+		padding: 1em 0;
+		height: 250px;
+	}
+	#agregarBox label {
+		font-size: 108%;
+	}
 }
 
 

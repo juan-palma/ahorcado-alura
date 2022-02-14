@@ -28,7 +28,7 @@ const control = {
 	"palabrasMal":"",
 	"intentos":0,
 	"resultado":"",
-	"run":true,
+	"run":false,
 	"validar":{
 		"texto":/[^a-zA-Z\u00f1\u00d1]/,
 		"texto2":/[a-zA-Z\s\u00f1\u00d1]/,
@@ -56,12 +56,41 @@ let arrayWork = [];
 
 
 // ::::::::::::::::: Funciones :::::::::::::::::
-//Aplicacion de la encriptacion/desencriptacion
-function agregarPalabra(){
+function limpiarJugar(){
+	control.palabrasBien = "";
+	control.palabrasMal = "";
+	control.intentos = 0;
+	control.resultado = "";
+	el.gano.innerHTML = "";
+	el.perdio.innerHTML = "";
+
+	let pincel = el.canvasPalabra.getContext("2d");
+	pincel.clearRect(0, 0, el.canvasPalabra.width, el.canvasPalabra.height);
 }
-//Funcion de copia de texto
 function limpiar(){
-	
+	control.categoria = "";
+	control.palabraJugar = "";
+	control.palabraJugarA = [];
+	control.palabraJugarCompleta = [];
+	control.palabrasBien = "";
+	control.palabrasMal = "";
+	control.intentos = 0;
+	control.resultado = "";
+	el.gano.innerHTML = "";
+	el.perdio.innerHTML = "";
+	arrayWork = [];
+
+	let pincel = el.canvasPalabra.getContext("2d");
+	pincel.clearRect(0, 0, el.canvasPalabra.width, el.canvasPalabra.height);
+}
+function salir(){
+	el.btnSettings.style.right = "20px";
+	el.btnPlay.style.display = "block";
+	el.btnSalir.style.display = "none";
+	el.erroresBox.classList.add('opacidad0');
+	control.run = false;
+	limpiar();
+	offTeclado();
 }
 function aleatorio(rango){
 	return Math.round(Math.random() * (rango[1] - rango[0])) + rango[0];
@@ -97,14 +126,22 @@ function agegarCategoria(){
 }
 function resultado(estado){
 	control.resultado = estado;
+	el.btnPlay.style.display = "block";
 	if(estado == 'gano'){
 		const img = document.createElement('img');
 		img.src = "img/msnGano.gif";
 		el.gano.appendChild(img);
 		el.gano.classList.add('activo');
 	} else{
+		const img = document.createElement('img');
+		img.src = "img/msnPerdio.gif";
+		img.onload = function(){
+			this.classList.add('activo');
+		}
+		el.perdio.appendChild(img);
 		el.perdio.classList.add('activo');
 	}
+	offTeclado();
 }
 function acierto(e){
 	const es = control.escenario;
@@ -116,10 +153,9 @@ function acierto(e){
 			pincel.fillStyle = es.letraBien;
 			pincel.textAlign = "center";
 			pincel.font="600 30px Lato";
-			pincel.fillText(letra, posicionX, (es.alturaBaseLineaLetras - 13));
+			pincel.fillText(letra.toUpperCase(), posicionX, (es.alturaBaseLineaLetras - 13));
 			control.palabraJugarCompleta[i] = letra;
 			if(!control.palabraJugarCompleta.includes(undefined)){
-				console.log('señal');
 				resultado('gano');
 			}
 		} else if(l == " "){
@@ -144,7 +180,7 @@ function fallo(e){
 				pincel.fillStyle = es.letraMal;
 				pincel.textAlign = "center";
 				pincel.font="600 30px Lato";
-				pincel.fillText(l, posicionX, (es.alturaBaseLineaLetras - 13));
+				pincel.fillText(l.toUpperCase(), posicionX, (es.alturaBaseLineaLetras - 13));
 			}
 		});
 		resultado('perdio');
@@ -275,7 +311,12 @@ function opciones(e){
 			if(detener){alert(mensajes); return false;}
 			if(categoria()){
 				el.btnSettings.click();
-				setTimeout(function(){ play(e); }, 1000, e);
+				control.run = true;
+				el.btnSettings.style.right = "inherit";
+				el.btnPlay.style.display = "none";
+				el.btnSalir.style.display = "block";
+				el.erroresBox.classList.remove('opacidad0');
+				setTimeout(function(){ play(e); }, 600, e);
 			}
 		}
 		return false;
@@ -283,9 +324,9 @@ function opciones(e){
 	return true;
 }
 function play(e){
-	if(control.resultado != ""){return false;}
 	if(opciones(e)){
 		control.palabraJugar = getPalabra();
+		limpiarJugar();
 		if(control.palabraJugar){
 			onTeclado();
 		} else{
@@ -326,6 +367,7 @@ function iniciar(){
 	el.btnComenzar = document.getElementById('btnComenzar');
 	el.btnComenzar.addEventListener(btnPlayEvent, play);
 	el.canvasPalabra = document.getElementById('cPalabra');
+	el.erroresBox = document.getElementById('erroresBox');
 	el.errores = document.getElementById('errores');
 	el.vidas = document.querySelector('#vidas .rojo');
 	el.gano = document.getElementById('msnGano');
@@ -341,6 +383,8 @@ function iniciar(){
 	el.inputAddPalabra = document.getElementById('palabraAdd');
 	el.btnAddPalabra = document.getElementById('btnAdd');
 	el.btnAddPalabra.addEventListener('click', addPalabra);
+	el.btnSalir = document.getElementById('btnSalirBox');
+	el.btnSalir.addEventListener('click', salir);
 }
 
 
