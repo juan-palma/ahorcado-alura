@@ -7,6 +7,9 @@ function avisoClear(el){
 		el.textContent = "";
 	}
 }
+//el = elemento donde se colocara el mensaje
+//m = el mensaje a colocar
+//c = opcional puede pasar un color para el texto del mensaje, de no colocarlo el color dependera de lo que el estilo css del campo tenga definido.
 function aviso(el, m, c=""){
 	avisoClear(el);
 	el.textContent = m;

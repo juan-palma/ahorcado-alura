@@ -398,6 +398,19 @@ input[type="button"]:hover{
 }
 
 
+/* Estilos para el boton de navegacion */
+.navicon { position: absolute; left: 0px; top: 10vh; }
+#nav-toggle { position: absolute; right: 20px; top: 0; }
+#nav-toggle { cursor: pointer; padding: 10px 30px 16px 0px; }
+#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after { cursor: pointer; border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px; -o-border-radius: 1px; height: 3px; width: 30px; background: rgba(255,255,255,0.4); position: absolute; display: block; content: ''; }
+#nav-toggle:hover span, #nav-toggle:hover span:before, #nav-toggle:hover span:after{background: rgba(255,255,255,1);}
+#nav-toggle span:before { top: -10px; }
+#nav-toggle span:after { bottom: -10px; }
+#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after { transition: all 500ms ease-in-out; -webkit-transition: all 500ms ease-in-out; -moz-transition: all 500ms ease-in-out; -o-transition: all 500ms ease-in-out; }
+#nav-toggle.active span { background-color: transparent; }
+#nav-toggle.active span:before, #nav-toggle.active span:after { top: 0; }
+#nav-toggle.active span:before { transform: rotate(45deg); -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); }
+#nav-toggle.active span:after { transform: translateY(-10px) rotate(-45deg); -webkit-transform: translateY(-10px) rotate(-45deg); -ms-transform: translateY(-10px) rotate(-45deg); top: 10px; }
 
 
 
@@ -414,7 +427,10 @@ input[type="button"]:hover{
 /* ==========================================================================
 	Estilos visiales del sitio.
 ========================================================================== */
-
+#fondo_body{
+	background: #292D27 url(../img/ahorcado_fondo.jpg) no-repeat center bottom;
+	background-size: cover;
+}
 #teclado{
 	width: 100%;
 	height: auto;
@@ -437,37 +453,260 @@ input[type="button"]:hover{
 	align-items: center;
 	z-index: 10;
 }
-	
-	#titulo{
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-		padding-top: 1.5rem;
-		padding-bottom: 1.5rem;
+	#container1{
+		width: 100%;
+		height: 100vh;
+		position: absolute;
+		top: 0px;
+		left: 0px;
 	}
-		#titulo h1{
-			margin-left: 2rem;
+		#settings {
+			width: 86%;
+			position: absolute;
+			right: -86.2%;
+			padding: 8%;
+			background-color: rgba(220,80,0,0.96);
+			top: 0px;
+			height: 100%;
+			z-index: 998;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
 		}
-			h1 > span:nth-child(2) {
-				color: aquamarine;
-				font-size: 88%;
+		#settings.show{
+			right: 0%;
+		}
+			#settings label {
+				color: white;
+				font-size: 124%;
+				margin-bottom: 1rem;
 			}
-			h1 > span:nth-child(4) {
-				color: rgba(255,255,255,0.5);
-				font-size: 60%;
-				font-weight: 300;
-				top: -4px;
-    			position: relative;
+			#settings select {
+				width: 100%;
+				height: 50px;
 			}
+			.boxSelect::after {
+				content: "^";
+				width: 50px;
+				height: 100%;
+				background-color: #37516a;
+				position: absolute;
+				right: -1px;
+				top: 0px;
+				border-bottom-left-radius: 6px;
+				border-top-left-radius: 6px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				line-height: 0;
+				font-size: 150%;
+				color: white;
+				padding-top: 8px;
+				box-sizing: border-box;
+				transform: rotate(180deg);
 
-#animaciones{
+				-webkit-transition: all 0.2s ease-in-out;
+				-moz-transition: all 0.2s ease-in-out;
+				-o-transition: all 0.2s ease-in-out;
+				-ms-transition: all 0.2s ease-in-out;
+				transition: all 0.2s ease-in-out;
+			}
+			.boxSelect:hover::after{
+				background-color: #227acc;
+			}
+			#niveles {
+				display: flex;
+				color: white;
+				text-align: center;
+				justify-content: flex-start;
+				align-items: center;
+				margin: 1em 0;
+			}
+				#niveles > div {
+					width: 88px;
+					padding: 18px;
+					background-color: darkslategrey;
+					cursor: pointer;
+				}
+				#niveles > div:hover,
+				#niveles > div.activo{
+					background-color: rgb(0, 221, 0);
+				}
+				#nivelFacil{
+					margin-left: 3px;
+					border-top-left-radius: 6px;
+					border-bottom-left-radius: 6px;
+				}
+				#nivelDificil{
+					margin-left: 3px;
+					border-top-right-radius: 6px;
+					border-bottom-right-radius: 6px;
+				}
+			#agregarBox{
+				padding: 2rem;
+				background-color: rgba(255,255,255,0.1);
+				margin: 2rem 0;
+			}
+				#agregarBox label[for="palabraAdd"]{
+					margin-bottom: 0px;
+					cursor: pointer;
+				}
+				#agregarBox label[for="palabraAdd"]:hover{
+					margin-left: 16px;
+				}
+				.togglehide{
+					height: 0px;
+					overflow: hidden;
+				}
+				.togglehide.activo{
+					height: 238px;
+					padding: 1em;
+				}
+					#agregarBox input[type="text"]{
+						margin-bottom: 4px;
+						text-align: left;
+						height: 36px;
+					}
+					#agregarBox select{
+						height: 36px;
+					}
+					#agregarBox .boxSelect::after{
+						width: 36px;
+					}
+					#addCategoriaBox {
+						padding: 8px 0;
+						display: flex;
+						justify-content: flex-start;
+						align-items: center;
+					}
+						#addCategoria {
+							width: 30px;
+							height: 30px;
+							background-color: chartreuse;
+							display: inline-flex;
+							justify-content: center;
+							align-items: center;
+							color: black;
+							cursor: pointer;
+							margin-right: 10px;
+						}
+						#addCategoria:hover{
+							background-color: rgb(251, 255, 0);
+						}
+					#btnAdd {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						line-height: 0;
+						padding: 8px;
+						text-align: center;
+						background: darkturquoise;
+						border: none;
+						border-radius: 8px;
+						margin-top: 10px;
+						cursor: pointer;
+						outline: 0px;
+						width: auto;
+						height: 31px;
+						margin: 10px 0;
+					}
+					#btnAdd:hover{
+						background-color: #37516a;
+						color: #fff;
+					}
+					#btnComenzar {
+						width: 100%;
+						padding: 1rem;
+						background-color: darkorange;
+						text-align: center;
+						color: black;
+						font-size: 122%;
+						cursor: pointer;
+					}
+					#btnComenzar:hover{
+						color: white;
+						background-color: rgb(117, 0, 0);
+					}
+		#titulo{
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			padding-top: 1.5rem;
+			padding-bottom: 1.5rem;
+		}
+			#titulo h1{
+				margin-left: 2rem;
+			}
+				h1 > span:nth-child(2) {
+					color: aquamarine;
+					font-size: 88%;
+				}
+				h1 > span:nth-child(4) {
+					color: rgba(255,255,255,0.5);
+					font-size: 60%;
+					font-weight: 300;
+					top: -4px;
+					position: relative;
+				}
+
+#canvas{
 	width:100%;
 	height:100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	position: fixed;
 	top: 0px;
 	left:0px;
 	z-index: 0;
 }
+	canvas{
+		position: absolute;
+		display: block;
+	}
+	#cPalabra{
+		bottom: 20vh;
+    	height: 124px;
+	}
+	#erroresBox{
+		text-align: right;
+		position: absolute;
+		right: 2%;
+		bottom: 24vh;
+		color: #f00;
+	}
+		#vidas{
+			color: rgb(103, 207, 6);
+		}
+		#vidas .rojo{
+			color: rgb(103, 207, 6);
+		}
+		#errores{
+			display: flex;
+			flex-direction: column;
+		}
+	#msnBox{
+		position: absolute;
+		width: 100%;
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+	}
+		#msnGano{
+			position: absolute;
+		}
+			#msnGano img{
+				mix-blend-mode: screen;
+			}
+		#msnPerdio{
+			position: absolute;
+		}
+			#msnPerdio img{
+				mix-blend-mode: screen;
+			}
 	
 				
 
@@ -561,7 +800,10 @@ input[type="button"]:hover{
 	Media Queries
 ========================================================================== */
 @media only screen and (max-width: 640px) {
-	
+	#cPalabra{
+		bottom: 30vh;
+    	height: 74px;
+	}
 }
 
 

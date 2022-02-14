@@ -65,6 +65,11 @@
 	<body id="fondo_body" inputmode="text">
 		<!-- Colocar el contenido de su sitio aqui -->
 		
+		<div id="msnBox">
+			<div id="msnGano"></div>
+			<div id="msnPerdio"></div>
+		</div>
+
 		<div id="teclado">
 			<div id="teclas">
 				<div id="a" class="tecla"></div>
@@ -87,6 +92,35 @@
 				<div id="visor">
 					<div id="btnPlay">Play</div>
 				</div>
+				<div id="settings" class="animar">
+					<div class="navicon">
+						<div id="nav-toggle" class="nav_slide_button" href="#"><span></span></div>
+					</div>
+					
+					<div id="extend">
+						<label for="categoria">¿En que categoría quieres jugar?</label>
+						<div class="boxSelect">
+							<select id="categorias">
+								<option value="" selected>Elegir Categoria</option>
+							</select>
+						</div>
+						<div id="niveles">
+							<div id="nivelFacil" class="animar">Facil</div>
+							<div id="nivelDificil" class="animar">Dificil</div>
+						</div>
+						<div id="agregarBox">
+							<label for="palabraAdd" class="animar">Agregar nueva palabra</label>
+							<div class="togglehide animar">
+								<input type="text" id="palabraAdd" maxlength="24" placeholder="maximo 24 caracteres"></input>
+								<label for="categoriaAdd">Elige la categoria donde agregar tu palabra</label>
+								<div class="boxSelect"><select id="categoriaAdd"></select></div>
+								<div id="addCategoriaBox"><span id="addCategoria" class="animar">+</span> O añade una nueva categoría</div>
+								<input type="button" id="btnAdd" class="animar" value="Agregar palabra"></input>
+							</div>
+						</div>
+						<div id="btnComenzar" class="animar">Comenzar</div>
+					</div>
+				</div>
 			</main>
 			<footer id="juanFooter">
 				<div class="interno">
@@ -99,8 +133,14 @@
 			</footer>
 		</div>
 
-		<div id="animaciones">
-			<canvas id="escenario">
+		<div id="canvas">
+			<div id="erroresBox" class="ocultar opacidad0">
+				<div id="vidas">Vidas: <span class="rojo"></span></div>
+				<span>Fallos:</span>
+				<div id="errores"></div>
+			</div>
+			<canvas id="cPalabra" width="300"></canvas>
+			<canvas id="cEscenario">
 
 			</canvas>
 		</div>
