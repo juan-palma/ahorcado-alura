@@ -678,7 +678,7 @@ input[type="button"]:hover{
 				color: black;
 				border-radius: 8px;
 				cursor: pointer;
-				bottom: 8%;
+				bottom: 12%;
 			}
 			#btnPlay:hover{
 				background-color: aquamarine;
@@ -765,20 +765,20 @@ input[type="button"]:hover{
 
 #teclado {
 	width: 100%;
-	height: 20vh;
+	height: 22vh;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-start;
 	position: absolute;
 	top: auto;
 	left: 0px;
 	bottom: 0px;
-	z-index: 9999;
+	z-index: 888;
 	background-color: #343337;
 }
 	#teclas {
 		width: 100%;
-		height: 100%;
+		height: auto;
 		display: flex;
 		justify-content: center;
 		align-items: flex-start;
@@ -794,6 +794,9 @@ input[type="button"]:hover{
 			justify-content: center;
 			align-items: center;
 			border-radius: 5px
+		}
+		#teclas .tecla:hover{
+			background-color: rgb(149, 174, 179);
 		}
 
 

@@ -6,7 +6,7 @@
 	<head itemscope itemtype="https://schema.org/Person" prefix="og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# profile: https://ogp.me/ns/profile#">
 		<meta charset="utf-8" />
 		<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
-		<meta name="viewport" content="width=device-width, user-scalable=yes, minimum-scale=1.0, maximum-scale=3.0, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0" />
 		
 		<meta http-equiv="Content-Encoding" content="gzip" />
 		<meta http-equiv="Accept-Encoding" content="gzip, deflate" />
@@ -100,39 +100,6 @@
 				<div id="visor">
 					<div id="btnPlay" class="animar">Play</div>
 				</div>
-				<div id="settings" class="animar">
-					<div class="navicon">
-						<div id="nav-toggle" class="nav_slide_button"><span></span></div>
-					</div>
-					<div id="btnSalirBox" class="animar">
-						<div id="btnSalir" class=""><span>Salir</span></div>
-					</div>
-					
-					<div id="extend">
-						<label for="categoria">¿En que categoría quieres jugar?</label>
-						<div class="boxSelect">
-							<select id="categorias">
-								<option value="" selected>Elegir Categoria</option>
-							</select>
-						</div>
-						<div id="niveles">
-							<div id="nivelFacil" class="animar">Facil</div>
-							<div id="nivelDificil" class="animar">Dificil</div>
-						</div>
-						<div id="btnComenzar" class="animar">Comenzar</div>
-						<div id="agregarBox">
-							<label for="palabraAdd" class="animar">Agregar nueva palabra</label>
-							<div class="togglehide animar">
-								<input type="text" id="palabraAdd" maxlength="24" placeholder="maximo 24 caracteres"></input>
-								<label for="categoriaAdd">Elige la categoria donde agregar tu palabra</label>
-								<div class="boxSelect"><select id="categoriaAdd"></select></div>
-								<div id="addCategoriaBox"><span id="addCategoria" class="animar">+</span> O añade una nueva categoría</div>
-								<input type="button" id="btnAdd" class="animar" value="Agregar palabra"></input>
-							</div>
-						</div>
-						
-					</div>
-				</div>
 			</main>
 			<footer id="juanFooter">
 				<div class="interno">
@@ -175,6 +142,41 @@
 				<div id="b" class="tecla">B</div>
 				<div id="n" class="tecla">N</div>
 				<div id="m" class="tecla">M</div>
+			</div>
+		</div>
+
+
+		<div id="settings" class="animar">
+			<div class="navicon">
+				<div id="nav-toggle" class="nav_slide_button"><span></span></div>
+			</div>
+			<div id="btnSalirBox" class="animar">
+				<div id="btnSalir" class=""><span>Salir</span></div>
+			</div>
+			
+			<div id="extend">
+				<label for="categoria">¿En que categoría quieres jugar?</label>
+				<div class="boxSelect">
+					<select id="categorias">
+						<option value="" selected>Elegir Categoria</option>
+					</select>
+				</div>
+				<div id="niveles">
+					<div id="nivelFacil" class="animar">Facil</div>
+					<div id="nivelDificil" class="animar">Dificil</div>
+				</div>
+				<div id="btnComenzar" class="animar">Comenzar</div>
+				<div id="agregarBox">
+					<label for="palabraAdd" class="animar">Agregar nueva palabra</label>
+					<div class="togglehide animar">
+						<input type="text" id="palabraAdd" maxlength="24" placeholder="maximo 24 caracteres"></input>
+						<label for="categoriaAdd">Elige la categoria donde agregar tu palabra</label>
+						<div class="boxSelect"><select id="categoriaAdd"></select></div>
+						<div id="addCategoriaBox"><span id="addCategoria" class="animar">+</span> O añade una nueva categoría</div>
+						<input type="button" id="btnAdd" class="animar" value="Agregar palabra"></input>
+					</div>
+				</div>
+				
 			</div>
 		</div>
 		
