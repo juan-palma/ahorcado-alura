@@ -430,6 +430,7 @@ input[type="button"]:hover{
 #fondo_body{
 	background: #292D27 url(../img/ahorcado_fondo.jpg) no-repeat center bottom;
 	background-size: cover;
+	overflow: hidden;
 }
 #teclado{
 	width: 100%;
