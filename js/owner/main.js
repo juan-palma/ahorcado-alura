@@ -239,9 +239,14 @@ function onTeclado(){
 		if(!el.mobile){
 			document.onkeyup = teclado;
 		} else{
-
+			const teclas = el.teclado.querySelectorAll('.tecla');
+			teclas.forEach(function(t){
+				t.key = t.id;
+				t.addEventListener(btnPlayEvent, teclado);
+			});
+			el.teclado.classList.add('on');
 		}
-	};
+	}
 	
 }
 function offTeclado(){
@@ -249,7 +254,12 @@ function offTeclado(){
 	if(!el.mobile){
 		document.onkeyup = '';
 	} else{
-
+		const teclas = el.teclado.querySelectorAll('.tecla');
+		teclas.forEach(function(t){
+			t.key = "";
+			t.removeEventListener(btnPlayEvent, teclado);
+		});
+		el.teclado.classList.remove('on');
 	}
 }
 function getPalabra(){
