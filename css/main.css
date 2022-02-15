@@ -619,7 +619,7 @@ input[type="button"]:hover{
 					#btnComenzar {
 						width: 100%;
 						padding: 1rem;
-						background-color: darkorange;
+						background-color: aqua;
 						text-align: center;
 						color: black;
 						font-size: 122%;
@@ -788,8 +788,16 @@ input[type="button"]:hover{
 			align-items: center;
 			border-radius: 5px
 		}
-		#teclas .tecla:hover{
+		#teclas .tecla.on{
 			background-color: rgb(149, 174, 179);
+		}
+		#teclas .tecla.anuladoBien{
+			background-color: rgb(34, 110, 51) !important;
+			color: #ddd !important;
+		}
+		#teclas .tecla.anuladoMal{
+			background-color: rgb(124, 53, 25) !important;
+			color: #ddd !important;
 		}
 
 
@@ -880,7 +888,7 @@ input[type="button"]:hover{
 ========================================================================== */
 @media only screen and (max-width: 640px) {
 	#cPalabra{
-		bottom: 30vh;
+		bottom: 28vh;
     	height: 74px;
 	}
 }
@@ -911,6 +919,16 @@ input[type="button"]:hover{
 	}
 	#agregarBox label {
 		font-size: 108%;
+	}
+	#erroresBox{
+		top: 22vh;
+		bottom: auto;
+	}
+	#msnGano, #msnPerdio{
+		width: 64%;
+	}
+	#msnGano{
+		width: 98%;
 	}
 }
 

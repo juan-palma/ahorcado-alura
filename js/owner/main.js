@@ -63,6 +63,7 @@ function limpiarJugar(){
 	control.resultado = "";
 	el.gano.innerHTML = "";
 	el.perdio.innerHTML = "";
+	el.errores.innerHTML = "";
 
 	let pincel = el.canvasPalabra.getContext("2d");
 	pincel.clearRect(0, 0, el.canvasPalabra.width, el.canvasPalabra.height);
@@ -78,6 +79,7 @@ function limpiar(){
 	control.resultado = "";
 	el.gano.innerHTML = "";
 	el.perdio.innerHTML = "";
+	el.errores.innerHTML = "";
 	arrayWork = [];
 
 	let pincel = el.canvasPalabra.getContext("2d");
@@ -141,6 +143,9 @@ function resultado(estado){
 		el.perdio.appendChild(img);
 		el.perdio.classList.add('activo');
 	}
+	control.palabraJugarCompleta = [];
+	control.palabraJugarA = [];
+	control.palabraJugar = "";
 	offTeclado();
 }
 function acierto(e){
@@ -173,6 +178,8 @@ function fallo(e){
 	letraError.textContent = letra.toUpperCase();
 	el.errores.appendChild(letraError);
 	if(control.intentos >= control.dificultades[control.dificultad] ){
+		console.log(control.palabraJugarA);
+		console.log(control.palabraJugarCompleta);
 		control.palabraJugarA.forEach(function(l, i){
 			if(control.palabraJugarCompleta[i] == undefined){
 				let pincel = el.canvasPalabra.getContext("2d");
@@ -216,6 +223,12 @@ function escenario(accion){
 	}
 }
 function teclado(e){
+	if(el.mobile){
+		e.preventDefault();
+		e.cancelBubble = true;
+		e.stopPropagation();
+		e = e.srcElement;
+	}
 	if(control.resultado != ""){return false;}
 	const letra = e.key.toLowerCase();
 	if (limitarEntrada(e)) {
@@ -223,11 +236,13 @@ function teclado(e){
 		if(letraRegEx.test(control.palabraJugar)){
 			if(!letraRegEx.test(control.palabrasBien)){
 				control.palabrasBien += letra;
+				if(el.mobile){e.classList.add('anuladoBien')}
 				acierto(e);
 			}
 		} else{
 			if(!letraRegEx.test(control.palabrasMal)){
 				control.palabrasMal += letra;
+				if(el.mobile){e.classList.add('anuladoMal')}
 				fallo(e);
 			}
 		}
@@ -243,6 +258,8 @@ function onTeclado(){
 			teclas.forEach(function(t){
 				t.key = t.id;
 				t.addEventListener(btnPlayEvent, teclado);
+				t.addEventListener('touchend', (e) => t.classList.remove('on'));
+				t.addEventListener('touchstart', (e) => t.classList.add('on'));
 			});
 			el.teclado.classList.add('on');
 		}
@@ -257,7 +274,11 @@ function offTeclado(){
 		const teclas = el.teclado.querySelectorAll('.tecla');
 		teclas.forEach(function(t){
 			t.key = "";
+			t.classList.remove('anuladoBien');
+			t.classList.remove('anuladoMal');
 			t.removeEventListener(btnPlayEvent, teclado);
+			t.removeEventListener('touchend', (e) => t.classList.remove('on'));
+			t.removeEventListener('touchstart', (e) => t.classList.add('on'));
 		});
 		el.teclado.classList.remove('on');
 	}
