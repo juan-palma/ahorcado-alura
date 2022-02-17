@@ -30,6 +30,7 @@ const control = {
 	"intentos":0,
 	"resultado":"",
 	"run":false,
+	"showAllTime":800,
 	"validar":{
 		"texto":/[^a-zA-Z\u00f1\u00d1]/,
 		"texto2":/[a-zA-Z\s\u00f1\u00d1]/,
@@ -161,7 +162,7 @@ function destelloToggle(accion, color=""){
 function animaciones(fin=""){
 	if(fin == 'gano'){
 		const img = document.createElement('img');
-		img.src = "img/msnGano.gif";
+		img.src = "img/msnGano.webp";
 		el.gano.appendChild(img);
 		el.gano.classList.add('activo');
 	} else if(control.intentos % (control.dificultades[control.dificultad] / control.base) == 0){
@@ -217,7 +218,7 @@ function animaciones(fin=""){
 				destelloToggle('off');
 
 				const img = document.createElement('img');
-				img.src = "img/msnPerdio.gif";
+				img.src = "img/msnPerdio.webp";
 				img.onload = function(){ this.classList.add('activo'); }
 				el.perdio.appendChild(img);
 			break;
@@ -499,7 +500,7 @@ function showPreload(){
 		el.fondos.classList.remove('opacidad0');
 		el.btnPlay.classList.remove('ocultar');
 		el.boxOpciones.classList.remove('opacidad0');
-	}, 1600);
+	}, control.showAllTime);
 }
 function checkPreload(e){
 	idagl.preloadLoad++;
