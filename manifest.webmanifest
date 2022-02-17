@@ -101,7 +101,6 @@
 	"display": "fullscreen",
 	"orientation": "portrait",
 	"scope": "/",
-	"id": "idalibre",
 	"theme_color": "#9acd32",
 	"background_color": "#292D27",
 	"screenshots": [

@@ -70,6 +70,12 @@
 		
 		<meta name="author" content="Juan Palma - ID.A libre">
 		<link type="text/plain" rel="author" href="humans.txt" />
+
+		<script>
+			if('serviceWorker' in navigator) {
+			  navigator.serviceWorker.register('/sw.js');
+			}
+		</script>
 		
 	</head>
 	<body id="fondo_body" inputmode="text">
