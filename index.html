@@ -7,7 +7,8 @@
 		<meta charset="utf-8" />
 		<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
 		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, user-scalable=yes, minimum-scale=1.0, maximum-scale=3.0, initial-scale=1.0" />
+
 		
 		<meta http-equiv="Content-Encoding" content="gzip" />
 		<meta http-equiv="Accept-Encoding" content="gzip, deflate" />
@@ -18,6 +19,14 @@
 				
 		<title>Oracle - Alura Reto - Ahorcado - Juan Palma</title>
 		<meta name="description" content="Segundo reto de los cursos de Alura, desarollaremos un juego de Ahorcado, hecho por Juan Palma"></meta>
+
+		<!-- PWA APP Startup configuration -->
+		<link rel="manifest" href="manifest.webmanifest">
+		<!-- Fallback application metadata for legacy browsers -->
+		<meta name="application-name" content="Ahorcado Version Ovni">
+		<link rel="icon" sizes="16x16 32x32 48x48 64x64" href="favicon.ico?v1">
+		<link rel="icon" sizes="512x512" href="img/icons/icono-ahorcado-ufo-512.png">
+		<meta name="theme-color" content="#9acd32"/>
 
 					
 		<meta name="dcterms.audience" content="Global" />
@@ -33,11 +42,11 @@
 		<script defer src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.8.1/lottie.min.js"
 			integrity="sha512-V1YyTKZJrzJNhcKthpNAaohFXBnu5K9j7Qiz6gv1knFuf13TW/3vpgVVhJu9fvbdW8lb5J6czIhD4fWK2iHKXA=="
 			crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script defer src="js/librerias/parallax.js" crossorigin="anonymous"  referrerpolicy="no-referrer"></script>
 		<script defer data-main="js/owner/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"
 			integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg=="
 			crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		
-		<meta name="theme-color" content="#282b30"/>
 		
 		<meta itemprop="name" content="Alura Reto - Ahorcado - Juan Palma" />
 		<meta itemprop="description" content="Segundo reto de los cursos de Alura, desarollaremos un juego de Ahorcado, hecho por Juan Palma" />
@@ -66,6 +75,44 @@
 	<body id="fondo_body" inputmode="text">
 		<!-- Colocar el contenido de su sitio aqui -->
 		
+		<div id="loadGif"><img src="img/ajax.gif" alt="Cargando..." width="20" height="20"/></div>
+		<div id="gifs" class="animar1-4 opacidad0">
+			<img id="animFLama" preload-src="img/flama.gif" alt="flama" width="214" height="252" />
+			<div id="resplandor" class="animar opacidad0"></div>
+			<div id="estrellas">
+				<div id="estrella1" class="estrella_contenedor">
+					<div class="estrella"></div>
+				</div>
+			</div>
+			<div id="lunaBox">
+				<div id="luna">
+					<div id="crater"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="fondos" class="animar1-4 opacidad0">
+			<div id="arbolesFondo" class="fullscreen" data-depth="0.10">
+				<img preload-src="img/ahorcado_arboles_fondo.png" alt="arboles fondo" width="2560" height="1600" />
+			</div>
+			<div id="escenario" class="fullscreen"  data-depth="0.20">
+				<img preload-src="img/ahorcado_escenario_fondo.png" alt="escenario" width="2560" height="1600" />
+				<div id="ventanas">
+					<div class="ventana"></div>
+					<div class="ventana"></div>
+				</div>
+				<div id="humano" class="p0">
+					<img src="img/humano.svg" alt="humano" width="100" height="100">
+				</div>
+				<div id="ovni" class="p2 p1 p0">
+					<img src="img/ovni.svg" alt="ovni" width="700" height="700">
+				</div>
+			</div>
+			<div id="arbolesfrente" class="fullscreen" data-depth="0.40">
+				<img preload-src="img/ahorcado_arboles_frente_fondo.png" alt="arboles frente" width="2560" height="1600" />
+			</div>
+		</div>
+		<div id="destelloAccion"></div>
 		<div id="canvas">
 			<div id="erroresBox" class="opacidad0">
 				<div id="vidas">Vidas: <span class="rojo"></span></div>
@@ -73,9 +120,7 @@
 				<div id="errores"></div>
 			</div>
 			<canvas id="cPalabra" width="300"></canvas>
-			<canvas id="cEscenario">
-
-			</canvas>
+			<canvas id="cEscenario" width="100" height="100"></canvas>
 		</div>
 
 		
@@ -99,7 +144,7 @@
 			</header>
 			<main id="container1" class="margenG">
 				<div id="visor">
-					<div id="btnPlay" class="animar">Play</div>
+					<div id="btnPlay" class="animar ocultar">Jugar</div>
 				</div>
 			</main>
 			<footer id="juanFooter">
@@ -116,70 +161,81 @@
 
 		<div id="teclado" class="animar">
 			<div id="teclas">
-				<div id="q" class="tecla">Q</div>
-				<div id="w" class="tecla">W</div>
-				<div id="e" class="tecla">E</div>
-				<div id="r" class="tecla">R</div>
-				<div id="t" class="tecla">T</div>
-				<div id="y" class="tecla">Y</div>
-				<div id="u" class="tecla">U</div>
-				<div id="i" class="tecla">I</div>
-				<div id="o" class="tecla">O</div>
-				<div id="p" class="tecla">P</div>
-				<div id="a" class="tecla">A</div>
-				<div id="s" class="tecla">S</div>
-				<div id="d" class="tecla">D</div>
-				<div id="f" class="tecla">F</div>
-				<div id="g" class="tecla">G</div>
-				<div id="h" class="tecla">H</div>
-				<div id="j" class="tecla">J</div>
-				<div id="k" class="tecla">K</div>
-				<div id="l" class="tecla">L</div>
-				<div id="ñ" class="tecla">Ñ</div>
-				<div id="z" class="tecla">Z</div>
-				<div id="x" class="tecla">X</div>
-				<div id="c" class="tecla">C</div>
-				<div id="v" class="tecla">V</div>
-				<div id="b" class="tecla">B</div>
-				<div id="n" class="tecla">N</div>
-				<div id="m" class="tecla">M</div>
+				<div class="tiraLetras">
+					<div id="q" class="tecla">Q</div>
+					<div id="w" class="tecla">W</div>
+					<div id="e" class="tecla">E</div>
+					<div id="r" class="tecla">R</div>
+					<div id="t" class="tecla">T</div>
+					<div id="y" class="tecla">Y</div>
+					<div id="u" class="tecla">U</div>
+					<div id="i" class="tecla">I</div>
+					<div id="o" class="tecla">O</div>
+					<div id="p" class="tecla">P</div>
+				</div>
+				<div class="tiraLetras">
+					<div id="a" class="tecla">A</div>
+					<div id="s" class="tecla">S</div>
+					<div id="d" class="tecla">D</div>
+					<div id="f" class="tecla">F</div>
+					<div id="g" class="tecla">G</div>
+					<div id="h" class="tecla">H</div>
+					<div id="j" class="tecla">J</div>
+					<div id="k" class="tecla">K</div>
+					<div id="l" class="tecla">L</div>
+					<div id="ñ" class="tecla">Ñ</div>
+				</div>
+				<div class="tiraLetras">
+					<div id="z" class="tecla">Z</div>
+					<div id="x" class="tecla">X</div>
+					<div id="c" class="tecla">C</div>
+					<div id="v" class="tecla">V</div>
+					<div id="b" class="tecla">B</div>
+					<div id="n" class="tecla">N</div>
+					<div id="m" class="tecla">M</div>
+				</div>
 			</div>
 		</div>
 
 
-		<div id="settings" class="animar">
+		<div id="settings" class="animar opacidad0">
 			<div class="navicon">
 				<div id="nav-toggle" class="nav_slide_button"><span></span></div>
 			</div>
 			<div id="btnSalirBox" class="animar">
-				<div id="btnSalir" class=""><span>Salir</span></div>
+				<div id="btnSalir" class=" animar"><span class="animar">Salir</span></div>
 			</div>
 			
 			<div id="extend">
-				<label for="categoria">¿En que categoría quieres jugar?</label>
-				<div class="boxSelect">
-					<select id="categorias">
-						<option value="" selected>Elegir Categoria</option>
-					</select>
-				</div>
-				<div id="niveles">
-					<div id="nivelFacil" class="animar">Facil</div>
-					<div id="nivelDificil" class="animar">Dificil</div>
+				<label for="categoria">Elige tu juego y dificultad</label>
+				<div class="cols2">
+					<div class="boxSelect">
+						<select id="categorias">
+							<option value="" selected>Elegir Categoria</option>
+						</select>
+					</div>
+					<div id="niveles">
+						<div id="nivelFacil" class="animar">Facil</div>
+						<div id="nivelDificil" class="animar">Dificil</div>
+					</div>
 				</div>
 				<div id="btnComenzar" class="animar">Comenzar</div>
 				<div id="agregarBox">
 					<label for="palabraAdd" class="animar">Agregar nueva palabra</label>
 					<div class="togglehide animar">
-						<input type="text" id="palabraAdd" maxlength="24" placeholder="maximo 24 caracteres"></input>
-						<label for="categoriaAdd">Elige la categoria donde agregar tu palabra</label>
-						<div class="boxSelect"><select id="categoriaAdd"></select></div>
-						<div id="addCategoriaBox"><span id="addCategoria" class="animar">+</span> O añade una nueva categoría</div>
-						<input type="button" id="btnAdd" class="animar" value="Agregar palabra"></input>
+						<div class="toogleAlto">
+							<input type="text" id="palabraAdd" maxlength="24" placeholder="maximo 24 caracteres"></input>
+							<label for="categoriaAdd">Categoria para tu palabra</label>
+							<div class="boxSelect"><select id="categoriaAdd"></select></div>
+							<div id="addCategoriaBox"><span id="addCategoria" class="animar">+</span> Añadir nueva categoría</div>
+							<input type="button" id="btnAdd" class="animar" value="Guardar palabra"></input>
+						</div>
 					</div>
 				</div>
 				
 			</div>
 		</div>
 		
+		<div id="preloadOculto" class="desaparece"></div>
 	</body>
 </html>

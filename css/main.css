@@ -16,7 +16,7 @@ html{
 	min-height: 100vh;
 }
 #fondo_body{
-	background : #292D27;
+	background : #002d38;
 	background-size: cover;
 	background-attachment: fixed;
 }
@@ -177,12 +177,15 @@ main, footer, header, aside, section, article, figure, figcaption, q, cite, bloc
 	--margenPadding: 2em;
 }
 .desaparece{
+	display: none;
+	visibility: hidden;
 	width: 1px;
 	height: 1px;
-	overflow: hidden;
-	opacity: 0.1;
-	clip: rect(1px 1px 1px 1px);
 	position: absolute;
+	overflow: hidden;
+	opacity: 0;
+	clip: rect(1px 1px 1px 1px);
+	
 }
 .ocultar{
 	display: none !important;
@@ -199,6 +202,13 @@ main, footer, header, aside, section, article, figure, figcaption, q, cite, bloc
 	-o-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
+}
+.animar1-4{
+	-webkit-transition: all 1.4s ease-in-out;
+	-moz-transition: all 1.4s ease-in-out;
+	-o-transition: all 1.4s ease-in-out;
+	-ms-transition: all 1.4s ease-in-out;
+	transition: all 1.4s ease-in-out;
 }
 h1{
 	width: 100%;
@@ -240,13 +250,16 @@ input[type="button"]:hover{
 /* Estrellas */
 #estrellas{
 	width: 100%;
-	height: 100%;
+	height: 100vh;
 	position: absolute;
+	top: 0px;
+	left: 0px;
+	opacity: 0.4;
 }
 .estrella_contenedor{
-	--estrellaTamaño: 8px;
-	width: var(--estrellaTamaño);
-	height: var(--estrellaTamaño);
+	--estrellaSize: 4px;
+	width: var(--estrellaSize);
+	height: var(--estrellaSize);
 	position: absolute;
 	display: flex;
     flex-wrap: wrap;
@@ -262,11 +275,12 @@ input[type="button"]:hover{
 .estrella::after{
     width: 0;
     border-color: transparent transparent #fff transparent;
-    border-width: 0 calc(var(--estrellaTamaño)*0.5) calc(var(--estrellaTamaño)*0.25) calc(var(--estrellaTamaño)*0.5);
+    border-width: 0 calc(var(--estrellaSize)*0.5) calc(var(--estrellaSize)*0.25) calc(var(--estrellaSize)*0.5);
     border-style: solid;
     position: absolute;
     transform: rotate(180deg);
-    box-shadow: 0 0 19px rgb(255 255 255 / 100%);
+    box-shadow: 0 0 24px rgb(255 255 255 / 100%);
+	filter: blur(0.4px);
 }
 
 .estrella::before{
@@ -293,7 +307,7 @@ input[type="button"]:hover{
 	}
 }
 .flotar1{
-	animation: flotar1 2s infinite ease-in-out alternate;
+	animation: flotar1 4s infinite ease-in-out alternate;
 }
 
 @keyframes flotar2 {
@@ -311,7 +325,7 @@ input[type="button"]:hover{
 	}
 }
 .flotar2{
-	animation: flotar2 3s infinite ease-in-out alternate;
+	animation: flotar2 6s infinite ease-in-out alternate;
 }
 
 @keyframes flotar3 {
@@ -325,7 +339,7 @@ input[type="button"]:hover{
 	}
 }
 .flotar3{
-	animation: flotar3 4s infinite ease-in-out alternate;
+	animation: flotar3 8s infinite ease-in-out alternate;
 }
 
 @keyframes flotar4 {
@@ -343,7 +357,7 @@ input[type="button"]:hover{
 	}
 }
 .flotar4{
-	animation: flotar4 8s infinite ease-in-out alternate;
+	animation: flotar4 16s infinite ease-in-out alternate;
 }
 
 @keyframes flotar5 {
@@ -376,7 +390,7 @@ input[type="button"]:hover{
 	}
 }
 .flotar5{
-	animation: flotar5 4s infinite ease-in-out alternate;
+	animation: flotar5 8s infinite ease-in-out alternate;
 }
 
 @keyframes flotar6 {
@@ -394,13 +408,13 @@ input[type="button"]:hover{
 	}
 }
 .flotar6{
-	animation: flotar6 4s infinite ease-in-out alternate;
+	animation: flotar6 8s infinite ease-in-out alternate;
 }
 
 
 /* Estilos para el boton de navegacion */
 .navicon { position: absolute; left: 0px; top: 16vh; }
-#nav-toggle { position: absolute; right: 20px; top: 0; }
+#nav-toggle { position: absolute; right: 13px; top: 0; }
 #nav-toggle { cursor: pointer; padding: 10px 30px 16px 0px; }
 #nav-toggle span, #nav-toggle span:before, #nav-toggle span:after { cursor: pointer; border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px; -o-border-radius: 1px; height: 3px; width: 30px; background: rgba(255,255,255,0.4); position: absolute; display: block; content: ''; }
 #nav-toggle:hover span, #nav-toggle:hover span:before, #nav-toggle:hover span:after{background: rgba(255,255,255,1);}
@@ -428,7 +442,7 @@ input[type="button"]:hover{
 	Estilos visiales del sitio.
 ========================================================================== */
 #fondo_body{
-	background: #292D27 url(../img/ahorcado_fondo.jpg) no-repeat center bottom;
+	background: #002d38 url(../img/ahorcado_fondo.jpg) no-repeat center bottom;
 	background-size: cover;
 	overflow: hidden;
 }
@@ -475,160 +489,230 @@ input[type="button"]:hover{
 				cursor: pointer;
 				display: none;
 			}
-			#btnSalirBox:hover{
-				color: chartreuse;
-			}
-			#settings label {
-				color: white;
-				font-size: 124%;
-				margin-bottom: 1rem;
-			}
-			#settings select {
+				#btnSalir span {
+					background: orangered;
+					padding: 6px 11px;
+				}
+			#btnSalirBox:hover #btnSalir span {
+					background: rgb(0, 0, 0);
+					color: chartreuse;
+				}
+			#extend {
 				width: 100%;
-				height: 50px;
 			}
-			.boxSelect::after {
-				content: "^";
-				width: 50px;
-				height: 100%;
-				background-color: #37516a;
-				position: absolute;
-				right: -1px;
-				top: 0px;
-				border-bottom-left-radius: 6px;
-				border-top-left-radius: 6px;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				line-height: 0;
-				font-size: 150%;
-				color: white;
-				padding-top: 8px;
-				box-sizing: border-box;
-				transform: rotate(180deg);
-
-				-webkit-transition: all 0.2s ease-in-out;
-				-moz-transition: all 0.2s ease-in-out;
-				-o-transition: all 0.2s ease-in-out;
-				-ms-transition: all 0.2s ease-in-out;
-				transition: all 0.2s ease-in-out;
-			}
-			.boxSelect:hover::after{
-				background-color: #227acc;
-			}
-			#niveles {
-				display: flex;
-				color: white;
-				text-align: center;
-				justify-content: flex-start;
-				align-items: center;
-				margin: 1em 0;
-			}
-				#niveles > div {
-					width: 88px;
-					padding: 18px;
-					background-color: darkslategrey;
-					cursor: pointer;
+				
+				#settings label {
+					color: white;
+					font-size: 124%;
+					margin-bottom: 1rem;
 				}
-				#niveles > div:hover,
-				#niveles > div.activo{
-					background-color: rgb(0, 221, 0);
+				#extend .cols2 {
+					width: 100%;
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: flex-start;
+					align-items: center;
 				}
-				#nivelFacil{
-					margin-left: 3px;
-					border-top-left-radius: 6px;
+					
+				#settings select {
+					width: 100%;
+					min-width: 200px;
+					height: 50px;
+				}
+				.boxSelect {
+					flex: 2 1 0;
+				}
+				.boxSelect::after {
+					content: "^";
+					width: 50px;
+					height: 100%;
+					background-color: #37516a;
+					position: absolute;
+					right: -1px;
+					top: 0px;
 					border-bottom-left-radius: 6px;
+					border-top-left-radius: 6px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					line-height: 0;
+					font-size: 150%;
+					color: white;
+					padding-top: 8px;
+					box-sizing: border-box;
+					transform: rotate(180deg);
+
+					-webkit-transition: all 0.2s ease-in-out;
+					-moz-transition: all 0.2s ease-in-out;
+					-o-transition: all 0.2s ease-in-out;
+					-ms-transition: all 0.2s ease-in-out;
+					transition: all 0.2s ease-in-out;
 				}
-				#nivelDificil{
-					margin-left: 3px;
-					border-top-right-radius: 6px;
-					border-bottom-right-radius: 6px;
+				.boxSelect:hover::after{
+					background-color: #227acc;
 				}
-			#agregarBox{
-				padding: 2rem;
-				background-color: rgba(255,255,255,0.1);
-				margin: 2rem 0;
-			}
-				#agregarBox label[for="palabraAdd"]{
-					margin-bottom: 0px;
-					cursor: pointer;
+				#niveles {
+					display: flex;
+					color: white;
+					text-align: center;
+					justify-content: flex-start;
+					align-items: center;
+					margin: 1em 2em;
+    				flex: 0 0 0;
 				}
-				#agregarBox label[for="palabraAdd"]:hover{
-					margin-left: 16px;
-				}
-				.togglehide{
-					height: 0px;
-					overflow: hidden;
-				}
-				.togglehide.activo{
-					height: 238px;
-					padding: 1em;
-				}
-					#agregarBox input[type="text"]{
-						margin-bottom: 4px;
-						text-align: left;
-						height: 36px;
+					#niveles > div {
+						width: 88px;
+						padding: 15px 18px;
+						background-color: #474c4c;
+						cursor: pointer;
 					}
-					#agregarBox select{
-						height: 36px;
+					#niveles > div:hover,
+					#niveles > div.activo{
+						background-color: #0d0;
 					}
-					#agregarBox .boxSelect::after{
-						width: 36px;
+					#nivelFacil{
+						margin-left: 3px;
+						border-top-left-radius: 6px;
+						border-bottom-left-radius: 6px;
 					}
-					#addCategoriaBox {
-						padding: 8px 0;
+					#nivelDificil{
+						margin-left: 3px;
+						border-top-right-radius: 6px;
+						border-bottom-right-radius: 6px;
+					}
+				#agregarBox{
+					padding: 2rem;
+					background-color: rgba(255,255,255,0.1);
+					margin: 2rem 0;
+					color: white;
+				}
+					#agregarBox label[for="palabraAdd"]{
+						margin-bottom: 0px;
+						cursor: pointer;
 						display: flex;
 						justify-content: flex-start;
 						align-items: center;
 					}
-						#addCategoria {
-							width: 30px;
-							height: 30px;
-							background-color: chartreuse;
-							display: inline-flex;
+					#agregarBox label[for="palabraAdd"]:hover,
+					#agregarBox label[for="palabraAdd"].activo{
+						margin-left: 16px;
+					}
+						#agregarBox > label[for="palabraAdd"]::before {
+							content: " ";
+							width: 0px;
+							height: 20px;
+							background-color: transparent;
+							border-top: 0px solid transparent;
+							border-bottom: 0px solid transparent;
+   							border-left: 20px solid #474c4c;
+							border-right: 0px solid transparent;
+							position: relative;
+							left: -12px;
+							-webkit-transition: all 0.3s ease-in-out;
+							-moz-transition: all 0.3s ease-in-out;
+							-o-transition: all 0.3s ease-in-out;
+							-ms-transition: all 0.3s ease-in-out;
+							transition: all 0.3s ease-in-out;
+						}
+						#agregarBox > label[for="palabraAdd"]:hover::before {
+							width: 0px;
+							height: 0px;
+							border-top: 10px solid transparent;
+							border-bottom: 10px solid transparent;
+   							border-left: 20px solid #474c4c;
+							border-right: 0px solid transparent;
+							left: -28px;
+						}
+						#agregarBox > label[for="palabraAdd"].activo::before {
+							width: 0px;
+							height: 0px;
+							border-top: 0px solid transparent;
+							border-bottom: 20px solid #474c4c;
+   							border-left: 14px solid transparent;
+							border-right: 14px solid transparent;
+							left: -28px;
+						}
+						
+					.togglehide{
+						max-height: 0px;
+						overflow: hidden;
+						padding: 0 1em 0;
+						margin-top: 0px;
+					}
+					.togglehide.activo{
+						margin-top: 30px;
+						max-height: 500px;
+					}	
+						#settings .togglehide label{
+							font-size: 100%;
+							margin: 14px 0px 5px;
+						}
+						#agregarBox input[type="text"]{
+							margin-bottom: 4px;
+							text-align: left;
+							height: 36px;
+						}
+						#agregarBox select{
+							height: 36px;
+						}
+						#agregarBox .boxSelect::after{
+							width: 36px;
+						}
+						#addCategoriaBox {
+							padding: 8px 0;
+							display: flex;
+							justify-content: flex-start;
+							align-items: center;
+						}
+							#addCategoria {
+								width: 30px;
+								height: 30px;
+								background-color: #0d0;
+								display: inline-flex;
+								justify-content: center;
+								align-items: center;
+								color: black;
+								cursor: pointer;
+								margin-right: 10px;
+							}
+							#addCategoria:hover{
+								background-color: rgb(251, 255, 0);
+							}
+						#btnAdd {
+							display: flex;
 							justify-content: center;
 							align-items: center;
-							color: black;
+							line-height: 0;
+							padding: 8px;
+							text-align: center;
+							background: #000;
+							color: #fff;
+							border: none;
+							border-radius: 8px;
+							margin-top: 10px;
 							cursor: pointer;
-							margin-right: 10px;
+							outline: 0px;
+							width: auto;
+							height: 31px;
+							margin: 10px 0;
 						}
-						#addCategoria:hover{
-							background-color: rgb(251, 255, 0);
+						#btnAdd:hover{
+							background-color: #0d0;
+							color: #fff;
 						}
-					#btnAdd {
-						display: flex;
-						justify-content: center;
-						align-items: center;
-						line-height: 0;
-						padding: 8px;
-						text-align: center;
-						background: darkturquoise;
-						border: none;
-						border-radius: 8px;
-						margin-top: 10px;
-						cursor: pointer;
-						outline: 0px;
-						width: auto;
-						height: 31px;
-						margin: 10px 0;
-					}
-					#btnAdd:hover{
-						background-color: #37516a;
-						color: #fff;
-					}
-					#btnComenzar {
-						width: 100%;
-						padding: 1rem;
-						background-color: aqua;
-						text-align: center;
-						color: black;
-						font-size: 122%;
-						cursor: pointer;
-					}
-					#btnComenzar:hover{
-						color: white;
-						background-color: rgb(117, 0, 0);
-					}
+						#btnComenzar {
+							width: 100%;
+							padding: 1rem;
+							background-color: #000;
+							text-align: center;
+							color: #fff;
+							font-size: 122%;
+							cursor: pointer;
+						}
+						#btnComenzar:hover{
+							color: white;
+							background-color: #0d0;
+						}
 		#titulo{
 			display: flex;
 			justify-content: flex-start;
@@ -662,24 +746,306 @@ input[type="button"]:hover{
 			#btnPlay{
 				display: block;
 				position: absolute;
-				background-color: chartreuse;
+				background-color: #0d0;
 				padding: 10px 40px;
 				color: black;
 				border-radius: 8px;
 				cursor: pointer;
-				bottom: 12%;
+				bottom: 14%;
 			}
 			#btnPlay:hover{
-				background-color: aquamarine;
+				background-color: rgb(255, 230, 0);
 			}
 
+.fullscreen{
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+	.fullscreen img{
+		width: 104%;
+		height: 100%;
+		object-fit: cover;
+		left: -2%;
+		position: relative;
+	}
+	#arbolesfrente img{
+		margin-bottom: -1%;
+		bottom: -1%;
+	}
+	#escenario img{
+		margin-bottom: -1%;
+		bottom: 1%;
+	}
+
+#gifs, #fondos{
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+	#loadGif{
+		width: 100%;
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
+		#loadGif img{
+			width: 20px;
+			height: 20px;
+		}
+	#arbolesFondo {
+		filter: blur(2px);
+	}
+	#animFLama {
+		height: 13vh;
+		position: absolute;
+		mix-blend-mode: screen;
+		right: -11.1vh;
+		top: auto;
+		width: auto;
+		bottom: 84vh;
+		margin-right: calc((5.55vh + 13px) + 11px);
+		opacity: 0;
+		transition: opacity 0.3s ease-in-out;
+	}
+	@keyframes amanecer {
+		0% {
+			opacity: 0;
+		}
+		50% {
+			opacity: 0;
+		}
+		60% {
+			opacity: 0;
+		}
+		70% {
+			opacity: 0.2;
+		}
+		80% {
+			opacity: 0;
+		}
+		90% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+	#resplandor {
+		width: 60%;
+		height: 22vh;
+		background-color: darkturquoise;
+		border-radius: 50%;
+		box-shadow: 0 0 180px rgb(200 200 255);
+		filter: blur(64px);
+		opacity: 0;
+		position: absolute;
+		left: 50%;
+		margin-left: -30%;
+		bottom: 8vh;
+		animation: amanecer 12s infinite ease-in-out alternate;
+	}
+	@keyframes ventanas {
+		0% {
+			opacity: 0;
+		}
+		40% {
+			opacity: 0.2;
+		}
+		80% {
+			opacity: 0.2;
+		}
+		84% {
+			opacity: 0.9;
+		}
+		88% {
+			opacity: 0.2;
+		}
+		92% {
+			opacity: 0.8;
+		}
+		96% {
+			opacity: 0.9;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+	#ventanas {
+		position: absolute;
+		top: 49%;
+		left: 50%;
+		margin-top: 23.3vh;
+		margin-left: 14.4vh;
+	}
+		.ventana {
+			width: 1.1vh;
+			height: 1.7vh;
+			background-color: gold;
+			position: absolute;
+			filter: blur(6px);
+			opacity: 0.5;
+			animation: ventanas 4s infinite ease-in-out alternate;
+		}
+		.ventana:last-child{
+			left: 3.6vh;
+		}
+	@keyframes luna{
+		0%{
+			transform: rotate(0deg);
+		}
+		100%{
+			transform: rotate(360deg);
+		}
+	}
+		#lunaBox {
+		width: 48px;
+		height: 56vh;
+		position: absolute;
+		bottom: 0px;
+		animation: luna 96s infinite linear;
+	}
+		#luna {
+			width: 48px;
+			height: 48px;
+			background-color: rgb(255 247 170);
+			border-radius: 50%;
+			filter: blur(0.7px);
+			box-shadow: 0 0 32px rgb(255 247 170 / 99%);
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			transform: rotate(8deg);
+		}
+			#crater {
+				width: 32px;
+				height: 42px;
+				background-color: #54876b;
+				border-radius: 50%;
+				filter: blur(0.7px);
+				margin-left: -1px;
+			}
+	#ovni {
+		width: 70vh;
+		height: 70vh;
+		position: absolute;
+		left: 50%;
+		top: 49%;
+		margin-left: -35vh;
+		margin-top: -35vh;
+		opacity: 1;
+		transform: scale(1);
+		transition: all 1.4s ease-in-out;
+	}
+	#ovni.p2 {
+		left: 50%;
+		top: 49%;
+		margin-left: -51vh;
+		margin-top: -35vh;
+		opacity: 1;
+		transform: scale(0.3);
+	}
+	#ovni.p1 {
+		left: 50%;
+		top: 49%;
+		margin-left: -15vh;
+    	margin-top: -51vh;
+    	opacity: 1;
+    	transform: scale(0.1);
+	}
+	#ovni.p0 {
+		left: 50%;
+		top: 49%;
+		margin-left: 0vh;
+    	margin-top: -100vh;
+    	opacity: 1;
+    	transform: scale(0.1);
+	}
+		@keyframes ovni2{
+			0%{
+				top: 0px;
+			}
+			50%{
+				top: 40px;
+			}
+			100%{
+				top: 0px;
+			}
+		}
+		#ovni img{
+			width: 100%;
+			height: 100%;
+			position: relative;
+			object-fit: contain;
+			transform: scale(0.8);
+			animation: ovni2 4s infinite ease-in-out alternate;
+		}
+		#ovni img.flotar{
+			animation: ovni2 4s infinite ease-in-out alternate;
+		}
+	#humano {
+		width: 10vh;
+		height: 10vh;
+		display: block;
+		position: absolute;
+		left: 50%;
+		top: 49%;
+		margin-top: 19.3vh;
+		margin-left: 11.4vh;
+		transition: all 0.6s ease-in-out;
+	}
+		#humano img{
+			width: 100%;
+			height: 100%;
+			position: relative;
+			object-fit: contain;
+			left: 0%;
+			top: 0%;
+			transform: scale(0.5);
+			opacity: 0;
+			transition: all 1.1s ease-in-out;
+		}
+		#humano.p1 img{
+			opacity: 1;
+			left: -148%;
+    		top: -29%;
+			transform: scale(1);
+		}
+		@keyframes humanoP5{
+			0%{
+				top: -133%;
+			}
+			50%{
+				top: -113%;
+			}
+			100%{
+				top: -133%;
+			}
+		}
+		#humano.p5 img{
+			left: -158%;
+    		top: -133%;
+			animation: humanoP5 4s infinite 1.2s ease-in-out alternate;
+		}
 #canvas{
 	width:100%;
 	height:100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	position: fixed;
+	position: absolute;
 	top: 0px;
 	left:0px;
 	z-index: 0;
@@ -689,7 +1055,7 @@ input[type="button"]:hover{
 		display: block;
 	}
 	#cPalabra{
-		bottom: 20vh;
+		bottom: 10vh;
     	height: 124px;
 	}
 	#erroresBox{
@@ -709,46 +1075,59 @@ input[type="button"]:hover{
 			display: flex;
 			flex-direction: column;
 		}
-	#msnBox{
+			#errores span {
+				font-weight: 900;
+				font-size: 118%;
+				line-height: 1.5;
+			}
+#msnBox{
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+	#msnGano{
 		position: absolute;
-		width: 100%;
-		height: 100vh;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-
+		width: 50%;
+		margin-top: -12%;
 	}
-		#msnGano{
-			position: absolute;
-			width: 50%;
-			margin-top: -12%;
+		#msnGano img{
+			width: 100%;
+			mix-blend-mode: screen;
 		}
-			#msnGano img{
-				width: 100%;
-				mix-blend-mode: screen;
-			}
-		#msnPerdio{
-			position: absolute;
-			width: 50%;
-			margin-top: -12%;
-		}
-			#msnPerdio img{
-				width: 100%;
-				mix-blend-mode: screen;
-				transform: scale(30.5);
-				opacity: 0;
+	#msnPerdio{
+		position: absolute;
+		width: 50%;
+		margin-top: -12%;
+	}
+		#msnPerdio img{
+			width: 100%;
+			mix-blend-mode: screen;
+			transform: scale(30.5);
+			opacity: 0;
 
-				-webkit-transition: all 0.2s ease-in-out;
-				-moz-transition: all 0.2s ease-in-out;
-				-o-transition: all 0.2s ease-in-out;
-				-ms-transition: all 0.2s ease-in-out;
-				transition: all 0.2s ease-in-out;
-			}
-			#msnPerdio img.activo {
-				transform: scale(1);
-				opacity: 1;
-			}
+			-webkit-transition: all 0.2s ease-in-out;
+			-moz-transition: all 0.2s ease-in-out;
+			-o-transition: all 0.2s ease-in-out;
+			-ms-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+		}
+		#msnPerdio img.activo {
+			transform: scale(1);
+			opacity: 1;
+		}
 	
+	#cEscenario{
+		width: 100px;
+		height: 100px;
+		display: block;
+		position: absolute;
+		left: 2vh;
+		top: 2vh;
+	}
 				
 
 #teclado {
@@ -762,6 +1141,7 @@ input[type="button"]:hover{
 	top: auto;
 	left: 0px;
 	bottom: 0px;
+	padding: 1% 0;
 	z-index: 888;
 	background-color: #343337;
 }
@@ -771,46 +1151,92 @@ input[type="button"]:hover{
 }
 	#teclas {
 		width: 100%;
-		height: auto;
+		height: 100%;
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
-		align-items: flex-start;
-		flex-wrap: wrap;
+		align-items: stretch;
 	}
-		#teclas .tecla {
-			width: 8.33%;
-			height: 11vw;
-			background-color: #666;
-			margin: 1vw 0.8%;
-			color: white;
+		.tiraLetras {
+			width: 100%;
+			height: auto;
+			flex: 1 0 0;
 			display: flex;
 			justify-content: center;
-			align-items: center;
-			border-radius: 5px
 		}
-		#teclas .tecla.on{
-			background-color: rgb(149, 174, 179);
+			#teclas .tecla {
+				width: 8.33%;
+				height: auto;
+				background-color: #666;
+				margin: 1% 0.8%;
+				color: white;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border-radius: 5px
+			}
+			#teclas .tecla.on{
+				background-color: rgb(149, 174, 179);
+				-webkit-tap-highlight-color: rgb(149, 174, 179);
+			}
+			#teclas .tecla.anuladoBien{
+				background-color: rgb(34, 110, 51) !important;
+				color: #ddd !important;
+			}
+			#teclas .tecla.anuladoMal{
+				background-color: rgb(124, 53, 25) !important;
+				color: #ddd !important;
+			}
+
+
+
+
+
+
+
+
+
+
+
+@media (min-aspect-ratio: 8/5) {
+	#ventanas {
+		margin-top: 15.1vw;
+		margin-left: 9.3vw;
+	}
+		.ventana {
+			width: 0.8vw;
+    		height: 1.1vw;
 		}
-		#teclas .tecla.anuladoBien{
-			background-color: rgb(34, 110, 51) !important;
-			color: #ddd !important;
+		.ventana:last-child {
+			left: 2.4vw;
 		}
-		#teclas .tecla.anuladoMal{
-			background-color: rgb(124, 53, 25) !important;
-			color: #ddd !important;
-		}
+	#ovni {
+		width: 45.4vw;
+		height: 45.4vw;
+		margin-left: -22.8vw;
+		margin-top: -23vw;
+	}
+	#humano {
+		width: 6.4vw;
+		height: 6.4vw;
+		margin-top: 12.5vw;
+    	margin-left: 7.5vw;
+	}
+}
 
 
-
-
-
-
-
-
-
-
-
-
+#destelloAccion {
+    width: 100%;
+    height: 22vh;
+    background-color: rgb(175, 255, 175);
+    border-radius: 50%;
+    filter: blur(64px);
+    position: absolute;
+    left: 0%;
+    bottom: -11vh;
+	opacity: 0;
+	transition: all 0.2ms ease-in-out;
+}
 
 
 
@@ -913,10 +1339,6 @@ input[type="button"]:hover{
 		padding: 1rem;
 		font-size: 85%;
 	}
-	.togglehide.activo{
-		padding: 1em 0;
-		height: 250px;
-	}
 	#agregarBox label {
 		font-size: 108%;
 	}
@@ -929,6 +1351,9 @@ input[type="button"]:hover{
 	}
 	#msnGano{
 		width: 98%;
+	}
+	#niveles {
+		margin: 1em 0;
 	}
 }
 

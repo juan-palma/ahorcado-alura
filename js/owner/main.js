@@ -15,11 +15,12 @@ const dbPalabras = {
 	"colores":['rojo', 'morado', 'violeta', 'purpura', 'fiusha', 'cafe', 'indigo', 'naranja', 'dorado', 'plateado'],
 	"peliculas":['harry potter', 'avengers', 'mujer bonita', 'matrix', 'terminator', 'shazam', 'no respires', 'inframundo', 'pulp fiction', 'blade runner'],
 	"caciones":['poker face', 'la carencia', 'wind of change', 'despacito', 'dance monkey', 'echoes', 'enter sadman', 'personal jesus', 'la flaca', 'matador', 'travesuras'],
-	"anime":['attack on titan', 'boku no hero', 'sword art online', 'une punch man', 'fullmetal alchemist', 'samurai X', 'dragon ball', 'naruto', 'inuyasha', 'bleach', 'une pice']
+	"anime":['attack on titan', 'boku no hero', 'sword art online', 'one punch man', 'fullmetal alchemist', 'samurai x', 'dragon ball', 'naruto', 'inuyasha', 'bleach', 'one pice']
 };
 const control = {
 	"categoria":"",
 	"dificultades":{ "facil":12, "dificil":6 },
+	"base":6,
 	"dificultad":"",
 	"palabraJugar":"",
 	"palabraJugarA":[],
@@ -64,9 +65,17 @@ function limpiarJugar(){
 	el.gano.innerHTML = "";
 	el.perdio.innerHTML = "";
 	el.errores.innerHTML = "";
+	el.btnPlay.style.display = "none";
+	el.humano.style.display = "none";
+	el.humano.removeAttribute('class');
+	el.ovni.classList.add('p2');
+	el.ovni.classList.add('p1');
+	el.ovni.classList.add('p0');
 
 	let pincel = el.canvasPalabra.getContext("2d");
 	pincel.clearRect(0, 0, el.canvasPalabra.width, el.canvasPalabra.height);
+	pincel = el.ahorcado.getContext("2d");
+	pincel.clearRect(0, 0, el.ahorcado.width, el.ahorcado.height);
 }
 function limpiar(){
 	control.categoria = "";
@@ -81,12 +90,19 @@ function limpiar(){
 	el.perdio.innerHTML = "";
 	el.errores.innerHTML = "";
 	arrayWork = [];
+	el.humano.style.display = "none";
+	el.humano.removeAttribute('class');
+	el.ovni.classList.add('p2');
+	el.ovni.classList.add('p1');
+	el.ovni.classList.add('p0');
 
 	let pincel = el.canvasPalabra.getContext("2d");
 	pincel.clearRect(0, 0, el.canvasPalabra.width, el.canvasPalabra.height);
+	pincel = el.ahorcado.getContext("2d");
+	pincel.clearRect(0, 0, el.ahorcado.width, el.ahorcado.height);
 }
 function salir(){
-	el.btnSettings.style.right = "20px";
+	el.btnSettings.style.right = "13px";
 	el.btnPlay.style.display = "block";
 	el.btnSalir.style.display = "none";
 	el.erroresBox.classList.add('opacidad0');
@@ -94,10 +110,122 @@ function salir(){
 	limpiar();
 	offTeclado();
 }
-function aleatorio(rango){
-	return Math.round(Math.random() * (rango[1] - rango[0])) + rango[0];
-}
+function dibujar(tramos){
+	const es = control.escenario;
+	let pincel = el.ahorcado.getContext("2d");
+	pincel.strokeStyle = "#fff";
+	pincel.lineWidth = es.grosorBaseLineaLetras;
+	pincel.lineCap='round';
+	if(tramos.hasOwnProperty('color')){
+		if(tramos.color.hasOwnProperty('trazo')){
+			pincel.strokeStyle = tramos.color.trazo;
+		} else if(tramos.color.hasOwnProperty('relleno')){
+			pincel.fillStyle = tramos.color.trazo;
+		}
+	}
 
+	if(tramos.d == 'lineas'){
+		pincel.beginPath();
+		pincel.moveTo(tramos.m.x, tramos.m.y);
+		tramos.l.forEach(function(t, i){
+			pincel.lineTo(t.lx, t.ly);
+		});
+		pincel.stroke();
+	} else if(tramos.d == 'circulos'){
+		pincel.beginPath();
+		tramos.c.forEach(function(c, i){
+			let miPi = 2*Math.PI;
+			if(c.hasOwnProperty('medio')){
+				if(c.medio){
+					miPi = 1*Math.PI;
+				}
+			}
+			pincel.arc(c.x, c.y, c.r, 0, miPi, false);
+		});
+		pincel.stroke();
+		
+	}
+}
+function destelloToggle(accion, color=""){
+	el.destello.style['background-color'] = (color != "") ? color : '#afffaf';
+	if(accion == 'on'){
+		el.destello.style['transition-duration'] = "1ms";
+		el.destello.style.opacity = 1;
+	} else{
+		setTimeout(()=>{
+			el.destello.style['transition-duration'] = "1s";
+			el.destello.style.opacity = 0;
+		}, 110);
+	}
+}
+function animaciones(fin=""){
+	if(fin == 'gano'){
+		const img = document.createElement('img');
+		img.src = "img/msnGano.gif";
+		el.gano.appendChild(img);
+		el.gano.classList.add('activo');
+	} else if(control.intentos % (control.dificultades[control.dificultad] / control.base) == 0){
+		switch(control.intentos / (control.dificultades[control.dificultad] / control.base)){
+			case 0:
+				control.run = true;
+				el.humano.style.display = "block";
+				setTimeout(()=>{ el.humano.classList.add('p1'); }, 100);
+				setTimeout(()=>{ control.run = false; }, 1200);
+			break;
+			case 1:
+				destelloToggle('on', '#f00');
+				control.run = true;	
+				el.ovni.classList.remove('p0');
+				setTimeout(()=>{ destelloToggle('off'); control.run = false; }, 1400);
+				dibujar({d:"lineas", m:{x:50, y:90,}, l:[{lx:50, ly:0}]});
+			break;
+			case 2:
+				destelloToggle('on', '#f00');
+				control.run = true;	
+				el.ovni.classList.remove('p1');
+				setTimeout(()=>{ destelloToggle('off'); control.run = false; }, 1400);
+				dibujar({d:"lineas", m:{x:50, y:0,}, l:[{lx:80, ly:0}, {lx:80, ly:10}]});
+			break;
+			case 3:
+				destelloToggle('on', '#f00');
+				control.run = true;	
+				el.ovni.classList.remove('p2');
+				setTimeout(()=>{ destelloToggle('off'); control.run = false; }, 1400);
+				dibujar({d:"circulos", c:[{x:80, y:25, r:15}]});
+				dibujar({d:"lineas", m:{x:80, y:40,}, l:[{lx:80, ly:70}]});
+			break;
+			case 4:
+				destelloToggle('on', '#f00');
+				dibujar({d:"lineas", m:{x:65, y:75,}, l:[{lx:80, ly:70},{lx:95, ly:75}]});
+				destelloToggle('off', '#f00');
+			break;
+			case 5:
+				destelloToggle('on', '#f00');
+				control.run = true;	
+				setTimeout(()=>{ el.humano.classList.add('p5'); }, 600);
+				setTimeout(()=>{ destelloToggle('off'); control.run = false; }, 1800);
+				dibujar({d:"lineas", m:{x:65, y:45,}, l:[{lx:80, ly:50},{lx:95, ly:45}]});
+			break;
+			case 6:
+				destelloToggle('on', '#f00');
+				dibujar({d:"lineas", color:{trazo:"#f00"}, m:{x:77, y:20,}, l:[{lx:72, ly:25}]});
+				dibujar({d:"lineas", color:{trazo:"#f00"}, m:{x:77, y:25,}, l:[{lx:72, ly:20}]});
+				dibujar({d:"lineas", color:{trazo:"#f00"}, m:{x:83, y:20,}, l:[{lx:88, ly:25}]});
+				dibujar({d:"lineas", color:{trazo:"#f00"}, m:{x:83, y:25,}, l:[{lx:88, ly:20}]});
+				dibujar({d:"lineas", color:{trazo:"#f00"}, m:{x:73, y:30,}, l:[{lx:87, ly:30}]});
+				dibujar({d:"circulos", color:{trazo:"#f00"}, c:[{x:84, y:33, r:3, medio:true}]});
+				destelloToggle('off');
+
+				const img = document.createElement('img');
+				img.src = "img/msnPerdio.gif";
+				img.onload = function(){ this.classList.add('activo'); }
+				el.perdio.appendChild(img);
+			break;
+		}
+	}
+
+	return true;
+}
 function addPalabra(){
 	if(!control.validar.texto.test(el.inputAddPalabra.value)){
 		dbPalabras[el.addPalabraCategoria.value].push(el.inputAddPalabra.value);
@@ -129,26 +257,16 @@ function agegarCategoria(){
 function resultado(estado){
 	control.resultado = estado;
 	el.btnPlay.style.display = "block";
-	if(estado == 'gano'){
-		const img = document.createElement('img');
-		img.src = "img/msnGano.gif";
-		el.gano.appendChild(img);
-		el.gano.classList.add('activo');
-	} else{
-		const img = document.createElement('img');
-		img.src = "img/msnPerdio.gif";
-		img.onload = function(){
-			this.classList.add('activo');
-		}
-		el.perdio.appendChild(img);
-		el.perdio.classList.add('activo');
-	}
 	control.palabraJugarCompleta = [];
 	control.palabraJugarA = [];
 	control.palabraJugar = "";
 	offTeclado();
+	animaciones(estado);
 }
 function acierto(e){
+	destelloToggle('on');
+	destelloToggle('off');
+	
 	const es = control.escenario;
 	const letra = e.key.toLowerCase();
 	control.palabraJugarA.forEach(function(l, i){
@@ -178,8 +296,6 @@ function fallo(e){
 	letraError.textContent = letra.toUpperCase();
 	el.errores.appendChild(letraError);
 	if(control.intentos >= control.dificultades[control.dificultad] ){
-		console.log(control.palabraJugarA);
-		console.log(control.palabraJugarCompleta);
 		control.palabraJugarA.forEach(function(l, i){
 			if(control.palabraJugarCompleta[i] == undefined){
 				let pincel = el.canvasPalabra.getContext("2d");
@@ -191,11 +307,15 @@ function fallo(e){
 			}
 		});
 		resultado('perdio');
-	} 
+	} else{
+		animaciones();
+	}
 }
 function escenario(accion){
 	const es = control.escenario;
 	if(accion == 'on'){
+		dibujar({d:"lineas", m:{x:30, y:100,}, l:[{lx:70, ly:100},{lx:50, ly:90},{lx:30, ly:100}]});
+
 		let pincel = el.canvasPalabra.getContext("2d");
 		el.canvasPalabra.width = (control.palabraJugarA.length * es.largoBaseLineaLetras) + ((control.palabraJugarA.length - 1) * es.margenBaseLineaLetras );
 		pincel.clearRect(0, 0, el.canvasPalabra.width, el.canvasPalabra.height);
@@ -217,12 +337,13 @@ function escenario(accion){
 		pincel.font="600 30px Lato";
 		pincel.fillText(" ", 0, 0);
 
-		return true;
+		if(animaciones()){ return true; }
 	} else if(accion = 'off'){
 		return true;
 	}
 }
 function teclado(e){
+	if(control.run){ return false; }
 	if(el.mobile){
 		e.preventDefault();
 		e.cancelBubble = true;
@@ -249,7 +370,6 @@ function teclado(e){
 	}
 }
 function onTeclado(){
-	//document.onkeydown = teclado;
 	if(escenario('on')){
 		if(!el.mobile){
 			document.onkeyup = teclado;
@@ -267,7 +387,6 @@ function onTeclado(){
 	
 }
 function offTeclado(){
-	//document.onkeydown = "";
 	if(!el.mobile){
 		document.onkeyup = '';
 	} else{
@@ -287,7 +406,7 @@ function getPalabra(){
 	let palabra = false;
 	if(arrayWork.length > 0){
 		const nAl = aleatorio([0,arrayWork.length-1]);
-		palabra = arrayWork[nAl];
+		palabra = arrayWork[nAl].toLowerCase();
 		control.palabraJugarA = [...palabra];
 		control.palabraJugarCompleta.length = palabra.length;
 		arrayWork.splice(nAl, 1);
@@ -347,7 +466,7 @@ function opciones(e){
 				el.btnPlay.style.display = "none";
 				el.btnSalir.style.display = "block";
 				el.erroresBox.classList.remove('opacidad0');
-				setTimeout(function(){ play(e); }, 600, e);
+				setTimeout(function(){ control.run = false; play(e); }, 600, e);
 			}
 		}
 		return false;
@@ -355,10 +474,11 @@ function opciones(e){
 	return true;
 }
 function play(e){
+	if(control.run){ return false; }
 	if(opciones(e)){
 		control.palabraJugar = getPalabra();
-		limpiarJugar();
 		if(control.palabraJugar){
+			limpiarJugar();
 			onTeclado();
 		} else{
 			offTeclado();
@@ -369,6 +489,38 @@ function play(e){
 
 
 // ::::::::::::::::: Procesos :::::::::::::::::
+function showPreload(){
+	el.circuloCarga.style.display = 'none';
+	setTimeout(function(){
+		const gifs = document.getElementById('gifs');
+		gifs.classList.remove('opacidad0');
+		gifs.addEventListener('transitionend', ()=>{ document.getElementById('animFLama').style.opacity = 1; })
+
+		el.fondos.classList.remove('opacidad0');
+		el.btnPlay.classList.remove('ocultar');
+		el.boxOpciones.classList.remove('opacidad0');
+	}, 1600);
+}
+function checkPreload(e){
+	idagl.preloadLoad++;
+	this.imgOriginal.src = this.src;
+	if(idagl.preloadTotal == idagl.preloadLoad){
+		showPreload();
+	}
+}
+idagl.preloadTotal = 0;
+idagl.preloadLoad = 0;
+function precarga(){
+	const imagenes = document.querySelectorAll('img[preload-src]');
+	imagenes.forEach(function(im){
+		const img = document.createElement('img');
+		img.src = im.attributes['preload-src'].value;
+		img.imgOriginal = im;
+		img.onload = checkPreload;
+		el.preloaOculto.appendChild(img);
+		idagl.preloadTotal++;
+	});
+}
 function iniciar(){
 	//habilitar funciones para moviles:
 	if(el.mobile = /Mobile/i.test(navigator.userAgent)){
@@ -378,13 +530,13 @@ function iniciar(){
 	}
 	//Obtener elementos del html
 	el.btnPlay = document.getElementById('btnPlay');
-	el.btnPlay.addEventListener(btnPlayEvent, play);
+	el.btnPlay.addEventListener('click', play);
 	el.teclado = document.getElementById('teclado');
 	el.boxOpciones = document.getElementById('settings');
 	el.btnFacil = document.getElementById('nivelFacil');
-	el.btnFacil.addEventListener(btnPlayEvent, dificultad);
+	el.btnFacil.addEventListener('click', dificultad);
 	el.btnDificil = document.getElementById('nivelDificil');
-	el.btnDificil.addEventListener(btnPlayEvent, dificultad);
+	el.btnDificil.addEventListener('click', dificultad);
 	el.addPalabraCategoria = document.getElementById('categoriaAdd');
 	el.categoria = document.getElementById('categorias');
 	dbPalabras.registro.forEach(function(v){
@@ -396,7 +548,7 @@ function iniciar(){
 		el.addPalabraCategoria.appendChild(valorClone);
 	});
 	el.btnComenzar = document.getElementById('btnComenzar');
-	el.btnComenzar.addEventListener(btnPlayEvent, play);
+	el.btnComenzar.addEventListener('click', play);
 	el.canvasPalabra = document.getElementById('cPalabra');
 	el.erroresBox = document.getElementById('erroresBox');
 	el.errores = document.getElementById('errores');
@@ -408,7 +560,7 @@ function iniciar(){
 	el.btnSettings.addEventListener('click', showOpciones);
 	el.btnMas = document.querySelector('label[for="palabraAdd"]');
 	el.masToggle = document.querySelector('#agregarBox .togglehide')
-	el.btnMas.addEventListener('click', () => el.masToggle.classList.toggle('activo'));
+	el.btnMas.addEventListener('click', (e) => { el.btnMas.classList.toggle('activo'); el.masToggle.classList.toggle('activo'); });
 	el.btnMasCategoria = document.getElementById('addCategoria');
 	el.btnMasCategoria.addEventListener('click', agegarCategoria);
 	el.inputAddPalabra = document.getElementById('palabraAdd');
@@ -416,6 +568,18 @@ function iniciar(){
 	el.btnAddPalabra.addEventListener('click', addPalabra);
 	el.btnSalir = document.getElementById('btnSalirBox');
 	el.btnSalir.addEventListener('click', salir);
+	el.canvas = document.getElementById('canvas');
+	el.ahorcado = document.getElementById('cEscenario');
+	el.ovni = document.getElementById('ovni');
+	el.humano = document.getElementById('humano');
+	el.destello = document.getElementById('destelloAccion');
+	
+	el.fondos = document.getElementById('fondos');
+	const parallax = new Parallax(el.fondos);
+	
+	el.circuloCarga = document.getElementById('loadGif');
+	el.preloaOculto = document.getElementById('preloadOculto')
+	precarga();
 }
 
 
@@ -427,4 +591,4 @@ requirejs.config({
     baseUrl: 'js/owner',
     paths: { a: '../animaciones', l: '../librerias' }
 });
-requirejs(['l/modernizr', 'validaciones', 'alertas'], iniciar);
+requirejs(['l/modernizr', 'validaciones', 'alertas', 'a/estrellas'], iniciar);
