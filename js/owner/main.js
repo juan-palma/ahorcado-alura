@@ -576,7 +576,7 @@ function iniciar(){
 	el.destello = document.getElementById('destelloAccion');
 	
 	el.fondos = document.getElementById('fondos');
-	const parallax = new Parallax(el.fondos);
+	if(!el.mobile){ const parallax = new Parallax(el.fondos); }
 	
 	el.circuloCarga = document.getElementById('loadGif');
 	el.preloaOculto = document.getElementById('preloadOculto')

@@ -946,7 +946,6 @@ input[type="button"]:hover{
 		margin-left: -35vh;
 		margin-top: -35vh;
 		opacity: 1;
-		transform: scale(1);
 		transition: all 1.4s ease-in-out;
 	}
 	#ovni.p2 {
@@ -955,24 +954,30 @@ input[type="button"]:hover{
 		margin-left: -51vh;
 		margin-top: -35vh;
 		opacity: 1;
-		transform: scale(0.3);
 	}
+		#ovni.p2 img{
+			transform: scale(0.3);
+		}
 	#ovni.p1 {
 		left: 50%;
 		top: 49%;
 		margin-left: -15vh;
     	margin-top: -51vh;
     	opacity: 1;
-    	transform: scale(0.1);
 	}
+		#ovni.p1 img{
+			transform: scale(0.1);
+		}
 	#ovni.p0 {
 		left: 50%;
 		top: 49%;
 		margin-left: 0vh;
     	margin-top: -100vh;
     	opacity: 1;
-    	transform: scale(0.1);
 	}
+		#ovni.p0 img{
+			transform: scale(0.1);
+		}
 		@keyframes ovni2{
 			0%{
 				top: 0px;
@@ -990,6 +995,7 @@ input[type="button"]:hover{
 			position: relative;
 			object-fit: contain;
 			transform: scale(0.8);
+			transition: all 1.4s ease-in-out;
 			animation: ovni2 4s infinite ease-in-out alternate;
 		}
 		#ovni img.flotar{
