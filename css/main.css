@@ -1362,6 +1362,9 @@ input[type="button"]:hover{
 	#niveles {
 		margin: 1em 0;
 	}
+	#cEscenario {
+		top: 13vh;
+	}
 }
 
 
