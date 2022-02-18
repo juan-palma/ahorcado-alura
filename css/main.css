@@ -1093,6 +1093,7 @@ input[type="button"]:hover{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	mix-blend-mode: screen;
 
 }
 	#msnGano{
