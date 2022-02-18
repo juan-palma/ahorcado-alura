@@ -442,7 +442,7 @@ input[type="button"]:hover{
 	Estilos visiales del sitio.
 ========================================================================== */
 #fondo_body{
-	background: #002d38 url(../img/ahorcado_fondo.jpg) no-repeat center bottom;
+	background: #002d38 url(../img/ahorcado_fondo.webp) no-repeat center bottom;
 	background-size: cover;
 	overflow: hidden;
 }

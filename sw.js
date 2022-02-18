@@ -10,7 +10,7 @@ self.addEventListener('install', function (event) {
 				'img/ahorcado_arboles_fondo.webp',
 				'img/ahorcado_arboles_frente_fondo.webp',
 				'img/ahorcado_escenario_fondo.webp',
-				'img/ahorcado_fondo.jpg',
+				'img/ahorcado_fondo.webp',
 				'img/ajax.webp',
 				'img/flama.webp',
 				'img/humano.svg',
