@@ -1163,7 +1163,16 @@ input[type="button"]:hover{
 		position: absolute;
 		width: 50%;
 		margin-top: -12%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
+	#msnGano span{
+			position: absolute;
+			font-size: 6vw;
+			z-index: 444;
+			color: white;
+		}
 		#msnGano img{
 			width: 100%;
 			mix-blend-mode: screen;

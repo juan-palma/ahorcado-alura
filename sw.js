@@ -25,7 +25,17 @@ self.addEventListener('install', function (event) {
 				'js/animaciones/estrellas.js',
 				'js/owner/alertas.js',
 				'js/owner/main.js',
-				'js/owner/validaciones.js'
+				'js/owner/validaciones.js',
+				'audios/juegoAmbiente.mp3',
+				'audios/acierto.mp3',
+				'audios/error.wav',
+				'audios/chiflido.mp3',
+				'audios/admiracion.mp3',
+				'audios/succion.wav',
+				'audios/partida.wav',
+				'audios/poder.wav',
+				'audios/golpe.mp3',
+				'audios/explosion.mp3'
 			]);
 		})
 	);

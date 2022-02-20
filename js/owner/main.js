@@ -169,6 +169,9 @@ function animaciones(fin=""){
 					const img = document.createElement('img');
 					img.src = "img/msnGano.webp";
 					el.gano.appendChild(img);
+					const text = document.createElement('span');
+					text.textContent = '¡GANASTE!';
+					el.gano.appendChild(text);
 					el.gano.classList.add('activo');
 					el.btnPlay.style.display = "block";		
 				}, 2000);
