@@ -38,14 +38,14 @@ function humanoChiflar(){
 	humanoTiempos = 1080;
 	if(humanoSeguir){
 		humano.playSegments([65,92], true);
-		//setTimeout(()=>{ audioChiflido(); }, 20);
+		setTimeout(()=>{ audioChiflido(); }, 150);
 	}
 }
 function humanoAdmiracion(){
 	humanoTiempos = 3160;
 	if(humanoSeguir){
 		humano.playSegments([110,189], true);
-		//setTimeout(()=>{ audioAdmiracion(); }, 20);
+		setTimeout(()=>{ audioAdmiracion(); }, 240);
 	}
 }
 function humanoPanico(){
@@ -71,7 +71,7 @@ function humanoPoder(){
 	humanoTiempos = 4400;
 	humano.removeEventListener('complete', enComplete);
 	humano.playSegments([455,565], true);
-	setTimeout(()=>{ audioPoder(); }, 3100);
+	setTimeout(()=>{ audioPoder(); }, 2600);
 	humano.addEventListener('complete', humanoReposo);
 }
 function humanoReposo(){

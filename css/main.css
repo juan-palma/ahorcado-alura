@@ -427,7 +427,66 @@ input[type="button"]:hover{
 #nav-toggle.active span:after { transform: translateY(-10px) rotate(-45deg); -webkit-transform: translateY(-10px) rotate(-45deg); -ms-transform: translateY(-10px) rotate(-45deg); top: 10px; }
 
 
+#audioBox {
+	display: flex;
+	padding: 2em 0;
+	color: white;
+	justify-content: flex-start;
+	align-items: center;
+}
+	#audioBox .titulo {
+		margin-right: 14px;
+	}
+	#audioBox .switchBox {
+		display: flex;
+		width: 110px;
+		height: 38px;
+		cursor: pointer;
+	}
+		.switchBox .swOpcion {
+			width: 50%;
+			max-width: 50%;
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+		}
+		.switchBox .swOpcion.off {
+			color: rgb(255 255 255 / 50%);
+			background-color: #666;
+			border-bottom-left-radius: 12px;
+			border-top-left-radius: 12px;
+		}
+		.switchBox .swOpcion.on {
+			background-color: #00b500;
+			border-bottom-right-radius: 12px;
+			border-top-right-radius: 12px;
+		}
+		.switchBox .switch {
+			width: 50%;
+			position: absolute;
+			height: 100%;
+			background: #333;
+			left: 50%;
+			border-bottom-left-radius: 0px;
+			border-top-left-radius: 0px;
+			border-bottom-right-radius: 11px;
+			border-top-right-radius: 11px;
 
+			-webkit-transition: all 0.2s ease-in-out;
+			-moz-transition: all 0.2s ease-in-out;
+			-o-transition: all 0.2s ease-in-out;
+			-ms-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+		}
+		.switchBox.on .switch {
+			left: 0%;
+			border-bottom-left-radius: 11px;
+			border-top-left-radius: 11px;
+			border-bottom-right-radius: 0px;
+			border-top-right-radius: 0px;
+		}
 
 
 

@@ -80,7 +80,7 @@ function limpiarBase(){
 	humanoClear();
 	ovniTarea = "";
 	ovniClear();
-	audioOvni('stop');
+	//audioOvni('stop');
 	let pincel = el.canvasPalabra.getContext("2d");
 	pincel.clearRect(0, 0, el.canvasPalabra.width, el.canvasPalabra.height);
 	pincel = el.ahorcado.getContext("2d");
@@ -100,6 +100,7 @@ function salir(){
 	el.btnSalir.style.display = "none";
 	el.erroresBox.classList.add('opacidad0');
 	control.run = false;
+	control.categoria = "";
 	limpiar();
 	offTeclado();
 }
@@ -236,7 +237,7 @@ function animaciones(fin=""){
 				dibujar({d:"lineas", color:{trazo:"#f00"}, m:{x:73, y:30,}, l:[{lx:87, ly:30}]});
 				dibujar({d:"circulos", color:{trazo:"#f00"}, c:[{x:84, y:33, r:3, medio:true}]});
 
-				let espera = (humanoRun) ? (humanoTiempos * 1.1) : 100;
+				let espera = (humanoRun) ? (humanoTiempos * .5) : 100;
 				humanoTarea = "";
 				humanoClear();
 				ovniTarea = "";
@@ -247,7 +248,7 @@ function animaciones(fin=""){
 						humanoSuccion();
 						setTimeout(function(){
 							ovniSuccion();
-							setInterval(function(){
+							setTimeout(function(){
 								el.ovni.classList.add('p0');
 							}, 1700);
 							setTimeout(function(){
@@ -258,7 +259,7 @@ function animaciones(fin=""){
 								destelloToggle('off', '#f00');
 								el.btnPlay.style.display = "block";	
 							}, 3600);
-						}, 1200);
+						}, 1000);
 					}, 800);
 				}, espera);
 				
@@ -480,7 +481,7 @@ function categoria(){
 	return true;
 }
 function showOpciones(e){
-	//audioRun();
+	audioRun();
 	if(this.estado == 'on'){
 		el.boxOpciones.classList.add('show');
 		this.classList.add('active');
@@ -517,7 +518,6 @@ function opciones(e){
 	return true;
 }
 function play(e){
-	console.log(control.run);
 	if(control.run){ return false; }
 	if(opciones(e)){
 		control.palabraJugar = getPalabra();
@@ -528,6 +528,17 @@ function play(e){
 			offTeclado();
 		};
 	}
+}
+function audio(){
+	this.classList.toggle('on');
+	if(this.classList.contains('on')){
+		control.audio = true;
+		audioRun();
+	} else{
+		audioRun('stop');
+		control.audio = false;
+	}
+	
 }
 
 
@@ -619,6 +630,8 @@ function iniciar(){
 	el.ovni = document.getElementById('ovni');
 	el.humano = document.getElementById('humano');
 	el.destello = document.getElementById('destelloAccion');
+	el.btnAudio =document.querySelector('#audioBox .switchBox');
+	el.btnAudio.addEventListener('click', audio);
 	
 	el.fondos = document.getElementById('fondos');
 	if(!el.mobile){ const parallax = new Parallax(el.fondos); }

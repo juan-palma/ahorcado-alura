@@ -204,6 +204,14 @@
 
 
 		<div id="settings" class="animar opacidad0">
+			<div id="audioBox">
+				<div class="titulo">Sonido: </div>
+				<div class="switchBox on">
+					<span class="swOpcion off">OFF</span>
+					<span class="swOpcion on">ON</span>
+					<div class="switch"></div>
+				</div>
+			</div>
 			<div class="navicon">
 				<div id="nav-toggle" class="nav_slide_button"><span></span></div>
 			</div>
@@ -212,10 +220,10 @@
 			</div>
 			
 			<div id="extend">
-				<label for="categoria">Elige tu juego y dificultad</label>
+				<label for="categoria" tabindex="-1">Elige tu juego y dificultad</label>
 				<div class="cols2">
 					<div class="boxSelect">
-						<select id="categorias">
+						<select id="categorias" tabindex="-1">
 							<option value="" selected>Elegir Categoria</option>
 						</select>
 					</div>
@@ -226,14 +234,14 @@
 				</div>
 				<div id="btnComenzar" class="animar">Comenzar</div>
 				<div id="agregarBox">
-					<label for="palabraAdd" class="animar">Agregar nueva palabra</label>
+					<label for="palabraAdd" class="animar" tabindex="-1">Agregar nueva palabra</label>
 					<div class="togglehide animar">
 						<div class="toogleAlto">
-							<input type="text" id="palabraAdd" maxlength="24" placeholder="maximo 24 caracteres"></input>
-							<label for="categoriaAdd">Categoria para tu palabra</label>
-							<div class="boxSelect"><select id="categoriaAdd"></select></div>
+							<input type="text" id="palabraAdd" maxlength="24" placeholder="maximo 24 caracteres" tabindex="-1"></input>
+							<label for="categoriaAdd" tabindex="-1">Categoria para tu palabra</label>
+							<div class="boxSelect"><select id="categoriaAdd" tabindex="-1"></select></div>
 							<div id="addCategoriaBox"><span id="addCategoria" class="animar">+</span> Añadir nueva categoría</div>
-							<input type="button" id="btnAdd" class="animar" value="Guardar palabra"></input>
+							<input type="button" id="btnAdd" class="animar" value="Guardar palabra" tabindex="-1"></input>
 						</div>
 					</div>
 				</div>
