@@ -1,13 +1,13 @@
-const ambiente = new Audio('audios/juegoAmbiente.mp3');
-ambiente.loop = true;
-ambiente.controls = false;
-function audioRun(accion=''){
-	if(!control.audio){ return false; }
-	if(accion !=''){ ambiente.pause(); return true; };
-	// ambiente.addEventListener("canplaythrough", event => {
-		if(ambiente.paused){ ambiente.play(); }
-	// });
-}
+// const ambiente = new Audio('audios/juegoAmbiente.mp3');
+// ambiente.loop = true;
+// ambiente.controls = false;
+// function audioRun(accion=''){
+// 	if(!control.audio){ return false; }
+// 	if(accion !=''){ ambiente.pause(); return true; };
+// 	// ambiente.addEventListener("canplaythrough", event => {
+// 		if(ambiente.paused){ ambiente.play(); }
+// 	// });
+// }
 
 const sonCorrect = new Audio('audios/acierto.mp3');
 sonCorrect.loop = false;
@@ -25,38 +25,38 @@ function audioError(){
 	if(sonError.paused){ sonError.play(); }
 }
 
-const sonChiflido = new Audio('audios/chiflido.mp3');
-sonChiflido.loop = false;
-sonChiflido.controls = false;
-function audioChiflido(){
-	if(!control.audio){ return false; }
-	if(sonChiflido.paused){ sonChiflido.play(); }
-}
+// const sonChiflido = new Audio('audios/chiflido.mp3');
+// sonChiflido.loop = false;
+// sonChiflido.controls = false;
+// function audioChiflido(){
+// 	if(!control.audio){ return false; }
+// 	if(sonChiflido.paused){ sonChiflido.play(); }
+// }
 
-const sonAdmiracion = new Audio('audios/admiracion.mp3');
-sonAdmiracion.loop = false;
-sonAdmiracion.controls = false;
-function audioAdmiracion(){
-	if(!control.audio){ return false; }
-	if(sonAdmiracion.paused){ sonAdmiracion.play(); }
-}
+// const sonAdmiracion = new Audio('audios/admiracion.mp3');
+// sonAdmiracion.loop = false;
+// sonAdmiracion.controls = false;
+// function audioAdmiracion(){
+// 	if(!control.audio){ return false; }
+// 	if(sonAdmiracion.paused){ sonAdmiracion.play(); }
+// }
 
-const sonPanico = new Audio('audios/panico.wav');
-sonPanico.loop = false;
-sonPanico.controls = false;
-function audioPanico(){
-	if(!control.audio){ return false; }
-	if(sonPanico.paused){ sonPanico.play(); }
-}
+// const sonPanico = new Audio('audios/panico.wav');
+// sonPanico.loop = false;
+// sonPanico.controls = false;
+// function audioPanico(){
+// 	if(!control.audio){ return false; }
+// 	if(sonPanico.paused){ sonPanico.play(); }
+// }
 
-const sonOvni = new Audio('audios/ovni.mp3');
-sonOvni.loop = true;
-sonOvni.controls = false;
-function audioOvni(accion=''){
-	if(!control.audio){ return false; }
-	if(accion !=''){ sonOvni.pause(); return true; };
-	if(sonOvni.paused){ sonOvni.play(); }
-}
+// const sonOvni = new Audio('audios/ovni.mp3');
+// sonOvni.loop = true;
+// sonOvni.controls = false;
+// function audioOvni(accion=''){
+// 	if(!control.audio){ return false; }
+// 	if(accion !=''){ sonOvni.pause(); return true; };
+// 	if(sonOvni.paused){ sonOvni.play(); }
+// }
 
 const sonSuccion = new Audio('audios/succion.wav');
 sonSuccion.loop = false;

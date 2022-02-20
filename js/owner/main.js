@@ -480,7 +480,7 @@ function categoria(){
 	return true;
 }
 function showOpciones(e){
-	audioRun();
+	//audioRun();
 	if(this.estado == 'on'){
 		el.boxOpciones.classList.add('show');
 		this.classList.add('active');
@@ -517,6 +517,7 @@ function opciones(e){
 	return true;
 }
 function play(e){
+	console.log(control.run);
 	if(control.run){ return false; }
 	if(opciones(e)){
 		control.palabraJugar = getPalabra();
