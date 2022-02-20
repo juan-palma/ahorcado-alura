@@ -955,8 +955,8 @@ input[type="button"]:hover{
 		margin-top: -35vh;
 		opacity: 1;
 	}
-		#ovni.p2 img{
-			transform: scale(0.3);
+		#ovni.p2 svg{
+			transform: scale(0.3) !important;
 		}
 	#ovni.p1 {
 		left: 50%;
@@ -965,8 +965,8 @@ input[type="button"]:hover{
     	margin-top: -51vh;
     	opacity: 1;
 	}
-		#ovni.p1 img{
-			transform: scale(0.1);
+		#ovni.p1 svg{
+			transform: scale(0.1) !important;
 		}
 	#ovni.p0 {
 		left: 50%;
@@ -975,8 +975,8 @@ input[type="button"]:hover{
     	margin-top: -100vh;
     	opacity: 1;
 	}
-		#ovni.p0 img{
-			transform: scale(0.1);
+		#ovni.p0 svg{
+			transform: scale(0.1) !important;
 		}
 		@keyframes ovni2{
 			0%{
@@ -989,16 +989,16 @@ input[type="button"]:hover{
 				top: 0px;
 			}
 		}
-		#ovni img{
+		#ovni svg{
 			width: 100%;
 			height: 100%;
 			position: relative;
 			object-fit: contain;
-			transform: scale(0.8);
+			transform: scale(0.8) !important;
 			transition: all 1.4s ease-in-out;
 			animation: ovni2 4s infinite ease-in-out alternate;
 		}
-		#ovni img.flotar{
+		#ovni svg.flotar{
 			animation: ovni2 4s infinite ease-in-out alternate;
 		}
 	#humano {
@@ -1012,7 +1012,7 @@ input[type="button"]:hover{
 		margin-left: 11.4vh;
 		transition: all 0.6s ease-in-out;
 	}
-		#humano img{
+		#humano svg{
 			width: 100%;
 			height: 100%;
 			position: relative;
@@ -1021,12 +1021,12 @@ input[type="button"]:hover{
 			top: 0%;
 			transform: scale(0.5);
 			opacity: 0;
-			transition: all 1.1s ease-in-out;
+			transition: all 1.3s ease-in-out;
 		}
-		#humano.p1 img{
+		#humano.p1 svg{
 			opacity: 1;
 			left: -148%;
-    		top: -29%;
+    		top: -14%;
 			transform: scale(1);
 		}
 		@keyframes humanoP5{
@@ -1040,10 +1040,14 @@ input[type="button"]:hover{
 				top: -133%;
 			}
 		}
-		#humano.p5 img{
+		#humano.p5 svg{
 			left: -158%;
     		top: -133%;
-			animation: humanoP5 4s infinite 1.2s ease-in-out alternate;
+			transform: rotate(25deg) !important;
+			/* animation: humanoP5 4s infinite 1.2s ease-in-out alternate; */
+		}
+		#humano.p6 svg{
+			transform: rotate(80deg) !important;
 		}
 #canvas{
 	width:100%;
@@ -1364,6 +1368,11 @@ input[type="button"]:hover{
 	}
 	#cEscenario {
 		top: 13vh;
+	}
+	#destelloAccion {
+		height: 8vh;
+		filter: blur(18px);
+		bottom: calc(-6vh + 22vh);
 	}
 }
 

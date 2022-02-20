@@ -31,6 +31,7 @@ const control = {
 	"resultado":"",
 	"run":false,
 	"showAllTime":800,
+	"audio": false,
 	"validar":{
 		"texto":/[^a-zA-Z\u00f1\u00d1]/,
 		"texto2":/[a-zA-Z\s\u00f1\u00d1]/,
@@ -58,28 +59,7 @@ let arrayWork = [];
 
 
 // ::::::::::::::::: Funciones :::::::::::::::::
-function limpiarJugar(){
-	control.palabrasBien = "";
-	control.palabrasMal = "";
-	control.intentos = 0;
-	control.resultado = "";
-	el.gano.innerHTML = "";
-	el.perdio.innerHTML = "";
-	el.errores.innerHTML = "";
-	el.btnPlay.style.display = "none";
-	el.humano.style.display = "none";
-	el.humano.removeAttribute('class');
-	el.ovni.classList.add('p2');
-	el.ovni.classList.add('p1');
-	el.ovni.classList.add('p0');
-
-	let pincel = el.canvasPalabra.getContext("2d");
-	pincel.clearRect(0, 0, el.canvasPalabra.width, el.canvasPalabra.height);
-	pincel = el.ahorcado.getContext("2d");
-	pincel.clearRect(0, 0, el.ahorcado.width, el.ahorcado.height);
-}
-function limpiar(){
-	control.categoria = "";
+function limpiarBase(){
 	control.palabraJugar = "";
 	control.palabraJugarA = [];
 	control.palabraJugarCompleta = [];
@@ -90,17 +70,29 @@ function limpiar(){
 	el.gano.innerHTML = "";
 	el.perdio.innerHTML = "";
 	el.errores.innerHTML = "";
-	arrayWork = [];
 	el.humano.style.display = "none";
 	el.humano.removeAttribute('class');
+	el.ovni.removeAttribute('class');
 	el.ovni.classList.add('p2');
 	el.ovni.classList.add('p1');
 	el.ovni.classList.add('p0');
-
+	humanoTarea = "";
+	humanoClear();
+	ovniTarea = "";
+	ovniClear();
+	audioOvni('stop');
 	let pincel = el.canvasPalabra.getContext("2d");
 	pincel.clearRect(0, 0, el.canvasPalabra.width, el.canvasPalabra.height);
 	pincel = el.ahorcado.getContext("2d");
 	pincel.clearRect(0, 0, el.ahorcado.width, el.ahorcado.height);
+}
+function limpiarJugar(){
+	limpiarBase();
+	el.btnPlay.style.display = "none";
+}
+function limpiar(){
+	limpiarBase();
+	arrayWork = [];
 }
 function salir(){
 	el.btnSettings.style.right = "13px";
@@ -161,29 +153,48 @@ function destelloToggle(accion, color=""){
 }
 function animaciones(fin=""){
 	if(fin == 'gano'){
-		const img = document.createElement('img');
-		img.src = "img/msnGano.webp";
-		el.gano.appendChild(img);
-		el.gano.classList.add('activo');
+		let espera = (humanoRun) ? (humanoTiempos * 1.1) : 100;
+		humanoTarea = "";
+		humanoClear();
+		ovniTarea = "";
+		ovniClear();
+		setTimeout(function(){
+			humanoPoder();
+			setTimeout(()=>{
+				ovniExplota();
+				el.humano.classList.remove('p5');
+				setTimeout(function(){
+					el.ovni.classList.add('p0');
+					const img = document.createElement('img');
+					img.src = "img/msnGano.webp";
+					el.gano.appendChild(img);
+					el.gano.classList.add('activo');
+					el.btnPlay.style.display = "block";		
+				}, 2000);
+			}, 4400);
+		}, espera);
+		
 	} else if(control.intentos % (control.dificultades[control.dificultad] / control.base) == 0){
 		switch(control.intentos / (control.dificultades[control.dificultad] / control.base)){
 			case 0:
 				control.run = true;
 				el.humano.style.display = "block";
-				setTimeout(()=>{ el.humano.classList.add('p1'); }, 100);
+				setTimeout(()=>{ el.humano.classList.add('p1'); humanoRun(); ovniRun(); }, 100);
 				setTimeout(()=>{ control.run = false; }, 1200);
 			break;
 			case 1:
 				destelloToggle('on', '#f00');
 				control.run = true;	
-				el.ovni.classList.remove('p0');
-				setTimeout(()=>{ destelloToggle('off'); control.run = false; }, 1400);
+				el.ovni.classList.toggle('p0');
+				//setTimeout(()=>{ destelloToggle('off'); control.run = false; }, 1400);
 				dibujar({d:"lineas", m:{x:50, y:90,}, l:[{lx:50, ly:0}]});
 			break;
 			case 2:
 				destelloToggle('on', '#f00');
 				control.run = true;	
 				el.ovni.classList.remove('p1');
+				humanoDealy = 3000;
+				humanoTarea = humanoChiflar;
 				setTimeout(()=>{ destelloToggle('off'); control.run = false; }, 1400);
 				dibujar({d:"lineas", m:{x:50, y:0,}, l:[{lx:80, ly:0}, {lx:80, ly:10}]});
 			break;
@@ -191,11 +202,17 @@ function animaciones(fin=""){
 				destelloToggle('on', '#f00');
 				control.run = true;	
 				el.ovni.classList.remove('p2');
+				humanoDealy = 2000;
+				humanoTarea = humanoAdmiracion;
 				setTimeout(()=>{ destelloToggle('off'); control.run = false; }, 1400);
 				dibujar({d:"circulos", c:[{x:80, y:25, r:15}]});
 				dibujar({d:"lineas", m:{x:80, y:40,}, l:[{lx:80, ly:70}]});
 			break;
 			case 4:
+				ovniDealy = 0;
+				ovniTarea = ovniChispas;
+				humanoDealy = 200;
+				humanoTarea = humanoPanico;
 				destelloToggle('on', '#f00');
 				dibujar({d:"lineas", m:{x:65, y:75,}, l:[{lx:80, ly:70},{lx:95, ly:75}]});
 				destelloToggle('off', '#f00');
@@ -203,6 +220,9 @@ function animaciones(fin=""){
 			case 5:
 				destelloToggle('on', '#f00');
 				control.run = true;	
+				humanoDealy = 400;
+				humanoTarea = humanoResiste;
+				ovniTarea = ovniRayo;
 				setTimeout(()=>{ el.humano.classList.add('p5'); }, 600);
 				setTimeout(()=>{ destelloToggle('off'); control.run = false; }, 1800);
 				dibujar({d:"lineas", m:{x:65, y:45,}, l:[{lx:80, ly:50},{lx:95, ly:45}]});
@@ -215,12 +235,33 @@ function animaciones(fin=""){
 				dibujar({d:"lineas", color:{trazo:"#f00"}, m:{x:83, y:25,}, l:[{lx:88, ly:20}]});
 				dibujar({d:"lineas", color:{trazo:"#f00"}, m:{x:73, y:30,}, l:[{lx:87, ly:30}]});
 				dibujar({d:"circulos", color:{trazo:"#f00"}, c:[{x:84, y:33, r:3, medio:true}]});
-				destelloToggle('off');
 
-				const img = document.createElement('img');
-				img.src = "img/msnPerdio.webp";
-				img.onload = function(){ this.classList.add('activo'); }
-				el.perdio.appendChild(img);
+				let espera = (humanoRun) ? (humanoTiempos * 1.1) : 100;
+				humanoTarea = "";
+				humanoClear();
+				ovniTarea = "";
+				ovniClear();
+				setTimeout(function(){
+					el.humano.classList.add('p6');
+					setTimeout(function(){
+						humanoSuccion();
+						setTimeout(function(){
+							ovniSuccion();
+							setInterval(function(){
+								el.ovni.classList.add('p0');
+							}, 1700);
+							setTimeout(function(){
+								const img = document.createElement('img');
+								img.src = "img/msnPerdio.webp";
+								img.onload = function(){ this.classList.add('activo'); }
+								el.perdio.appendChild(img);
+								destelloToggle('off', '#f00');
+								el.btnPlay.style.display = "block";	
+							}, 3600);
+						}, 1200);
+					}, 800);
+				}, espera);
+				
 			break;
 		}
 	}
@@ -257,8 +298,6 @@ function agegarCategoria(){
 }
 function resultado(estado){
 	control.resultado = estado;
-	el.btnPlay.style.display = "block";
-	control.palabraJugarCompleta = [];
 	control.palabraJugarA = [];
 	control.palabraJugar = "";
 	offTeclado();
@@ -324,7 +363,6 @@ function escenario(accion){
 		pincel.strokeStyle = "#fff";
 		pincel.lineCap='round';
 		control.palabraJugarA.forEach(function(l, i){
-			console.log(l);
 			if(l != " "){
 				const posicionX =  (es.largoBaseLineaLetras + es.margenBaseLineaLetras) * i;
 				pincel.beginPath();
@@ -359,12 +397,14 @@ function teclado(e){
 			if(!letraRegEx.test(control.palabrasBien)){
 				control.palabrasBien += letra;
 				if(el.mobile){e.classList.add('anuladoBien')}
+				audioCorrecto();
 				acierto(e);
 			}
 		} else{
 			if(!letraRegEx.test(control.palabrasMal)){
 				control.palabrasMal += letra;
 				if(el.mobile){e.classList.add('anuladoMal')}
+				audioError();
 				fallo(e);
 			}
 		}
@@ -440,6 +480,7 @@ function categoria(){
 	return true;
 }
 function showOpciones(e){
+	audioRun();
 	if(this.estado == 'on'){
 		el.boxOpciones.classList.add('show');
 		this.classList.add('active');
@@ -472,6 +513,7 @@ function opciones(e){
 		}
 		return false;
 	}
+	limpiarJugar();
 	return true;
 }
 function play(e){
@@ -479,7 +521,7 @@ function play(e){
 	if(opciones(e)){
 		control.palabraJugar = getPalabra();
 		if(control.palabraJugar){
-			limpiarJugar();
+			console.log(control.palabraJugar);
 			onTeclado();
 		} else{
 			offTeclado();
@@ -500,6 +542,8 @@ function showPreload(){
 		el.fondos.classList.remove('opacidad0');
 		el.btnPlay.classList.remove('ocultar');
 		el.boxOpciones.classList.remove('opacidad0');
+
+		
 	}, control.showAllTime);
 }
 function checkPreload(e){
@@ -592,4 +636,4 @@ requirejs.config({
     baseUrl: 'js/owner',
     paths: { a: '../animaciones', l: '../librerias' }
 });
-requirejs(['l/modernizr', 'validaciones', 'alertas', 'a/estrellas'], iniciar);
+requirejs(['l/modernizr', 'validaciones', 'alertas', 'a/estrellas', 'a/humano', 'a/ovni', 'audio'], iniciar);
