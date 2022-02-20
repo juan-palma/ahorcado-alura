@@ -31,7 +31,7 @@ const control = {
 	"resultado":"",
 	"run":false,
 	"showAllTime":800,
-	"audio": false,
+	"audio": true,
 	"validar":{
 		"texto":/[^a-zA-Z\u00f1\u00d1]/,
 		"texto2":/[a-zA-Z\s\u00f1\u00d1]/,
@@ -186,7 +186,7 @@ function animaciones(fin=""){
 				destelloToggle('on', '#f00');
 				control.run = true;	
 				el.ovni.classList.toggle('p0');
-				//setTimeout(()=>{ destelloToggle('off'); control.run = false; }, 1400);
+				setTimeout(()=>{ destelloToggle('off'); control.run = false; }, 1400);
 				dibujar({d:"lineas", m:{x:50, y:90,}, l:[{lx:50, ly:0}]});
 			break;
 			case 2:
