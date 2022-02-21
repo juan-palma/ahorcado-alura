@@ -11,6 +11,8 @@
 // }
 
 const sonCorrect = new Audio('audios/acierto.mp3');
+sonCorrect.playsinline = true;
+sonCorrect.autoplay = false;
 sonCorrect.loop = false;
 sonCorrect.controls = false;
 function audioCorrecto(){
@@ -19,6 +21,8 @@ function audioCorrecto(){
 }
 
 const sonError = new Audio('audios/error.wav');
+sonError.playsinline = true;
+sonError.autoplay = false;
 sonError.loop = false;
 sonError.controls = false;
 function audioError(){
@@ -27,6 +31,8 @@ function audioError(){
 }
 
 const sonChiflido = new Audio('audios/chiflido.mp3');
+sonChiflido.playsinline = true;
+sonChiflido.autoplay = false;
 sonChiflido.loop = false;
 sonChiflido.controls = false;
 sonChiflido.volume = 0.7;
@@ -36,6 +42,8 @@ function audioChiflido(){
 }
 
 const sonAdmiracion = new Audio('audios/admiracion.mp3');
+sonAdmiracion.playsinline = true;
+sonAdmiracion.autoplay = false;
 sonAdmiracion.loop = false;
 sonAdmiracion.controls = false;
 function audioAdmiracion(){
@@ -61,6 +69,8 @@ function audioAdmiracion(){
 // }
 
 const sonSuccion = new Audio('audios/succion.wav');
+sonSuccion.playsinline = true;
+sonSuccion.autoplay = false;
 sonSuccion.loop = false;
 sonSuccion.controls = false;
 function audioSuccion(){
@@ -77,6 +87,8 @@ function audioSuccion(){
 // }
 
 const sonPoder = new Audio('audios/poder.wav');
+sonPoder.playsinline = true;
+sonPoder.autoplay = false;
 sonPoder.loop = false;
 sonPoder.controls = false;
 function audioPoder(){
@@ -85,6 +97,8 @@ function audioPoder(){
 }
 
 const sonGolpe = new Audio('audios/golpe.mp3');
+sonGolpe.playsinline = true;
+sonGolpe.autoplay = false;
 sonGolpe.loop = false;
 sonGolpe.controls = false;
 function audioGolpe(){
@@ -93,6 +107,8 @@ function audioGolpe(){
 }
 
 const sonExplosion = new Audio('audios/explosion.mp3');
+sonExplosion.playsinline = true;
+sonExplosion.autoplay = false;
 sonExplosion.loop = false;
 sonExplosion.controls = false;
 function audioExplosion(){

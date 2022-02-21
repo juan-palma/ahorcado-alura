@@ -59,7 +59,7 @@ function ovniExplota(){
 ovni = bodymovin.loadAnimation({
   container: document.getElementById('ovni'),
   path: 'js/animaciones/ovni.json',
-  renderer: 'svg',
+  renderer: 'canvas',
   loop: false,
   autoplay: false,
   name: "ovni"

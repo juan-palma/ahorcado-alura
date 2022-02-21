@@ -84,7 +84,7 @@ function humanoReposo(){
 humano = bodymovin.loadAnimation({
   container: document.getElementById('humano'),
   path: 'js/animaciones/humano.json',
-  renderer: 'svg',
+  renderer: 'canvas',
   loop: false,
   autoplay: false,
   name: "humano"
