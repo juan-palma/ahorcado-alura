@@ -219,11 +219,11 @@ function animaciones(fin=""){
 			break;
 			case 4:
 				ovniDealy = 400;
-				ovniTarea = ovniChispas;
+				ovniTarea = humanoPanico;
 				ovniAdd();
-				ovniChispas();
+				//ovniChispas();
 				humanoDealy = 200;
-				humanoTarea = humanoPanico;
+				humanoTarea = ovniChispas;
 				destelloToggle('on', '#f00');
 				dibujar({d:"lineas", m:{x:65, y:75,}, l:[{lx:80, ly:70},{lx:95, ly:75}]});
 				destelloToggle('off', '#f00');

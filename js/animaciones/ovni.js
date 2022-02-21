@@ -7,6 +7,7 @@ let ovniSeguir = true;
 let ovniTarea = "";
 let ovniDealy = 2000;
 function ovniEjecutor(){
+	console.log('señal');
 	if(!ovniSeguir){return false;}
 	ovniStatus = true;
 	if(ovniTarea != ""){
