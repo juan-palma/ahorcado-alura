@@ -213,8 +213,9 @@ function animaciones(fin=""){
 				dibujar({d:"lineas", m:{x:80, y:40,}, l:[{lx:80, ly:70}]});
 			break;
 			case 4:
-				ovniDealy = 2000;
+				ovniDealy = 400;
 				ovniTarea = ovniChispas;
+				ovniAdd();
 				ovniChispas();
 				humanoDealy = 200;
 				humanoTarea = humanoPanico;
