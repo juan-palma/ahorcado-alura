@@ -526,9 +526,10 @@ function play(e){
 		control.palabraJugar = getPalabra();
 		if(control.palabraJugar){
 			console.log(control.palabraJugar);
-			gtag('event', 'categoria_jugar', {
-				'categoria': control.categoria
-			});
+			// gtag('event', 'categoria_jugar', {
+			// 	'categoria': control.categoria
+			// });
+			dataLayer.push({'event':'categoria_jugada','categoria':control.categoria});
 			onTeclado();
 		} else{
 			offTeclado();
