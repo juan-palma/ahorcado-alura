@@ -956,7 +956,7 @@ input[type="button"]:hover{
 			position: absolute;
 			filter: blur(6px);
 			opacity: 0.5;
-			animation: ventanas 4s infinite ease-in-out alternate;
+			/* animation: ventanas 4s infinite ease-in-out alternate; */
 		}
 		.ventana:last-child{
 			left: 3.6vh;
@@ -974,7 +974,7 @@ input[type="button"]:hover{
 		height: 56vh;
 		position: absolute;
 		bottom: 0px;
-		animation: luna 96s infinite linear;
+		/* animation: luna 96s infinite linear; */
 	}
 		#luna {
 			width: 48px;

@@ -10,7 +10,7 @@ const dbPalabras = {
 	"registro":['general', 'niños', 'comida', 'animales', 'colores', 'peliculas', 'caciones', 'anime'],
 	"general":['lapiz', 'carro', 'lavadora', 'avenida', 'regadera', 'puerta', 'bocinas', 'television', 'alberca', 'parque'],
 	"niños":['caricaturas', 'consola', 'pelota', 'freefire', 'cars', 'juguetes' ,'muñeca', 'patineta', 'parque', 'helado'],
-	"comida":['hambruguesa', 'pizza', 'mole', 'gorditas', 'quesadillas', 'elote', 'pastes', 'carnitas', 'posole', 'taquitos'],
+	"comida":['hambruguesa', 'pizza', 'mole', 'gorditas', 'quesadillas', 'elote', 'pastes', 'carnitas', 'pozole', 'taquitos'],
 	"animales":['cuervo', 'gallo', 'vaca', 'leon', 'cocodrilo', 'elefante', 'rinoceronte', 'venado', 'girafa', 'perezoso'],
 	"colores":['rojo', 'morado', 'violeta', 'purpura', 'fiusha', 'cafe', 'indigo', 'naranja', 'dorado', 'plateado'],
 	"peliculas":['harry potter', 'avengers', 'mujer bonita', 'matrix', 'terminator', 'shazam', 'no respires', 'inframundo', 'pulp fiction', 'blade runner'],
@@ -643,9 +643,22 @@ function iniciar(){
 	el.fondos = document.getElementById('fondos');
 	if(!el.mobile){ const parallax = new Parallax(el.fondos); }
 	
+	el.luna = document.getElementById('lunaBox');
+	if(!el.mobile){
+		el.luna.style.animation = 'luna 96s infinite linear';
+	} else{
+		el.luna.style.transform = 'rotate(24deg)';
+	}
+	el.ventanas = document.querySelectorAll('.ventana');
+	el.ventanas.forEach((v)=>{
+		if(!el.mobile){
+			v.style.animation = 'ventanas 4s infinite ease-in-out alternate';
+		}
+	});
 	el.circuloCarga = document.getElementById('loadGif');
 	el.preloaOculto = document.getElementById('preloadOculto')
 	precarga();
+	starRun();
 }
 
 
