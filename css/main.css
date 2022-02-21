@@ -1055,7 +1055,7 @@ input[type="button"]:hover{
 			object-fit: contain;
 			transform: scale(0.8) !important;
 			transition: all 1.4s ease-in-out;
-			/* animation: ovni2 4s infinite ease-in-out alternate; */
+			animation: ovni2 4s infinite ease-in-out alternate;
 		}
 		#ovni canvas.flotar{
 			/* animation: ovni2 4s infinite ease-in-out alternate; */
@@ -1103,7 +1103,7 @@ input[type="button"]:hover{
 			left: -158%;
     		top: -133%;
 			transform: rotate(25deg) !important;
-			/* animation: humanoP5 4s infinite 1.2s ease-in-out alternate; */
+			animation: humanoP5 4s infinite 1.2s ease-in-out alternate;
 		}
 		#humano.p6 canvas{
 			transform: rotate(80deg) !important;

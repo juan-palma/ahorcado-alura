@@ -187,7 +187,8 @@ function animaciones(fin=""){
 					el.humano.classList.add('p1');
 					humanoAdd();
 					humanoRun();
-					/*ovniRun();*/ 
+					ovniAdd();
+					ovniRun();
 				}, 100);
 				setTimeout(()=>{ control.run = false; }, 1200);
 			break;
@@ -219,11 +220,9 @@ function animaciones(fin=""){
 			break;
 			case 4:
 				ovniDealy = 400;
-				ovniTarea = humanoPanico;
-				ovniAdd();
-				//ovniChispas();
+				ovniTarea = ovniChispas;
 				humanoDealy = 200;
-				humanoTarea = ovniChispas;
+				humanoTarea = humanoPanico;
 				destelloToggle('on', '#f00');
 				dibujar({d:"lineas", m:{x:65, y:75,}, l:[{lx:80, ly:70},{lx:95, ly:75}]});
 				destelloToggle('off', '#f00');
@@ -239,6 +238,7 @@ function animaciones(fin=""){
 				dibujar({d:"lineas", m:{x:65, y:45,}, l:[{lx:80, ly:50},{lx:95, ly:45}]});
 			break;
 			case 6:
+				console.log('case 6');
 				destelloToggle('on', '#f00');
 				dibujar({d:"lineas", color:{trazo:"#f00"}, m:{x:77, y:20,}, l:[{lx:72, ly:25}]});
 				dibujar({d:"lineas", color:{trazo:"#f00"}, m:{x:77, y:25,}, l:[{lx:72, ly:20}]});
@@ -491,7 +491,7 @@ function categoria(){
 	return true;
 }
 function showOpciones(e){
-	//audioRun();
+	audioRun();
 	if(this.estado == 'on'){
 		el.boxOpciones.classList.add('show');
 		this.classList.add('active');
@@ -650,13 +650,16 @@ function iniciar(){
 	el.fondos = document.getElementById('fondos');
 	el.ventanas = document.getElementById('ventanas');
 	el.luna = document.getElementById('lunaBox');
+
+	el.ventanas.style.animation = 'ventanas 4s infinite ease-in-out alternate';
+	el.luna.style.animation = 'luna 96s infinite linear';
 	
 	if(!el.mobile){
 		const parallax = new Parallax(el.fondos);
-		el.ventanas.style.animation = 'ventanas 4s infinite ease-in-out alternate';
-		el.luna.style.animation = 'luna 96s infinite linear';
+		// el.ventanas.style.animation = 'ventanas 4s infinite ease-in-out alternate';
+		// el.luna.style.animation = 'luna 96s infinite linear';
 	} else{
-		el.luna.style.transform = 'rotate(24deg)';
+		//el.luna.style.transform = 'rotate(24deg)';
 	}
 	
 	

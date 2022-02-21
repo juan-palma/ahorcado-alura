@@ -1,14 +1,16 @@
-// const ambiente = new Audio('audios/juegoAmbiente.mp3');
-// ambiente.loop = true;
-// ambiente.controls = false;
-// ambiente.volume = 0.4;
-// function audioRun(accion=''){
-// 	if(!control.audio){ return false; }
-// 	if(accion !=''){ ambiente.pause(); return true; };
-// 	// ambiente.addEventListener("canplaythrough", event => {
-// 		if(ambiente.paused){ ambiente.play(); }
-// 	// });
-// }
+const ambiente = new Audio('audios/juegoAmbiente.mp3');
+ambiente.playsinline = true;
+ambiente.autoplay = false;
+ambiente.loop = true;
+ambiente.controls = false;
+ambiente.volume = 0.4;
+function audioRun(accion=''){
+	if(!control.audio){ return false; }
+	if(accion !=''){ ambiente.pause(); return true; };
+	// ambiente.addEventListener("canplaythrough", event => {
+		if(ambiente.paused){ ambiente.play(); }
+	// });
+}
 
 const sonCorrect = new Audio('audios/acierto.mp3');
 sonCorrect.playsinline = true;
@@ -46,27 +48,28 @@ sonAdmiracion.playsinline = true;
 sonAdmiracion.autoplay = false;
 sonAdmiracion.loop = false;
 sonAdmiracion.controls = false;
+sonAdmiracion.volume = 0.9;
 function audioAdmiracion(){
 	if(!control.audio){ return false; }
 	if(sonAdmiracion.paused){ sonAdmiracion.play(); }
 }
 
-// const sonPanico = new Audio('audios/panico.wav');
-// sonPanico.loop = false;
-// sonPanico.controls = false;
-// function audioPanico(){
-// 	if(!control.audio){ return false; }
-// 	if(sonPanico.paused){ sonPanico.play(); }
-// }
+const sonPanico = new Audio('audios/panico.wav');
+sonPanico.loop = false;
+sonPanico.controls = false;
+function audioPanico(){
+	if(!control.audio){ return false; }
+	if(sonPanico.paused){ sonPanico.play(); }
+}
 
-// const sonOvni = new Audio('audios/ovni.mp3');
-// sonOvni.loop = true;
-// sonOvni.controls = false;
-// function audioOvni(accion=''){
-// 	if(!control.audio){ return false; }
-// 	if(accion !=''){ sonOvni.pause(); return true; };
-// 	if(sonOvni.paused){ sonOvni.play(); }
-// }
+const sonOvni = new Audio('audios/ovni.mp3');
+sonOvni.loop = true;
+sonOvni.controls = false;
+function audioOvni(accion=''){
+	if(!control.audio){ return false; }
+	if(accion !=''){ sonOvni.pause(); return true; };
+	if(sonOvni.paused){ sonOvni.play(); }
+}
 
 const sonSuccion = new Audio('audios/succion.wav');
 sonSuccion.playsinline = true;
@@ -78,13 +81,13 @@ function audioSuccion(){
 	if(sonSuccion.paused){ sonSuccion.play(); }
 }
 
-// const sonPartida = new Audio('audios/partida.wav');
-// sonPartida.loop = false;
-// sonPartida.controls = false;
-// function audioPartida(){
-// 	if(!control.audio){ return false; }
-// 	if(sonPartida.paused){ sonPartida.play(); }
-// }
+const sonPartida = new Audio('audios/partida.wav');
+sonPartida.loop = false;
+sonPartida.controls = false;
+function audioPartida(){
+	if(!control.audio){ return false; }
+	if(sonPartida.paused){ sonPartida.play(); }
+}
 
 const sonPoder = new Audio('audios/poder.wav');
 sonPoder.playsinline = true;

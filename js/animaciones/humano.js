@@ -54,7 +54,7 @@ function humanoPanico(){
 	humanoTiempos = 2600;
 	if(humanoSeguir){
 		humano.playSegments([200,265], true);
-		//setTimeout(()=>{ audioPanico(); }, 20);
+		setTimeout(()=>{ audioPanico(); }, 20);
 	}
 }
 function humanoResiste(){

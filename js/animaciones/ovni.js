@@ -5,9 +5,8 @@ let ovniAccion = false;
 let ovniTiempos = "";
 let ovniSeguir = true;
 let ovniTarea = "";
-let ovniDealy = 2000;
+let ovniDealy = 800;
 function ovniEjecutor(){
-	console.log('señal');
 	if(!ovniSeguir){return false;}
 	ovniStatus = true;
 	if(ovniTarea != ""){
@@ -34,22 +33,19 @@ function ovniRun(){
 function ovniChispas(){
 	if(ovniSeguir){
 		ovni.playSegments([75,130], true);
-		ovni.addEventListener('complete', ovniComplete);
-		//setTimeout(()=>{ audioOvni(); }, 20);
+		setTimeout(()=>{ audioOvni(); }, 20);
 	}
 }
 function ovniRayo(){
-	console.log('rayo');
 	if(ovniSeguir){
-		console.log('rayo run');
 		ovni.playSegments([150,200], true);
 	}
 }
 function ovniSuccion(){
 	ovni.playSegments([225,275], true);
 	setTimeout(()=>{ audioSuccion(); }, 80);
-	//setTimeout(()=>{ audioPartida(); }, 1600);
-	//setTimeout(()=>{ audioOvni('stop'); }, 850);
+	setTimeout(()=>{ audioPartida(); }, 1600);
+	setTimeout(()=>{ audioOvni('stop'); }, 850);
 }
 function ovniExplota(){
 	ovni.playSegments([300,337], true);
