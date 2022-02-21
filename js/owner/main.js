@@ -183,7 +183,7 @@ function animaciones(fin=""){
 			case 0:
 				control.run = true;
 				el.humano.style.display = "block";
-				setTimeout(()=>{ el.humano.classList.add('p1'); humanoRun(); ovniRun(); }, 100);
+				setTimeout(()=>{ el.humano.classList.add('p1'); humanoRun(); /*ovniRun();*/ }, 100);
 				setTimeout(()=>{ control.run = false; }, 1200);
 			break;
 			case 1:
