@@ -30,11 +30,14 @@ function ovniRun(){
 function ovniChispas(){
 	if(ovniSeguir){
 		ovni.playSegments([75,130], true);
+		ovni.addEventListener('complete', ovniComplete);
 		//setTimeout(()=>{ audioOvni(); }, 20);
 	}
 }
 function ovniRayo(){
+	console.log('rayo');
 	if(ovniSeguir){
+		console.log('rayo run');
 		ovni.playSegments([150,200], true);
 	}
 }

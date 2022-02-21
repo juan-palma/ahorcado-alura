@@ -29,6 +29,7 @@ function audioError(){
 const sonChiflido = new Audio('audios/chiflido.mp3');
 sonChiflido.loop = false;
 sonChiflido.controls = false;
+sonChiflido.volume = 0.7;
 function audioChiflido(){
 	if(!control.audio){ return false; }
 	if(sonChiflido.paused){ sonChiflido.play(); }

@@ -213,8 +213,9 @@ function animaciones(fin=""){
 				dibujar({d:"lineas", m:{x:80, y:40,}, l:[{lx:80, ly:70}]});
 			break;
 			case 4:
-				ovniDealy = 0;
+				ovniDealy = 2000;
 				ovniTarea = ovniChispas;
+				ovniChispas();
 				humanoDealy = 200;
 				humanoTarea = humanoPanico;
 				destelloToggle('on', '#f00');
@@ -643,12 +644,11 @@ function iniciar(){
 	el.fondos = document.getElementById('fondos');
 	el.ventanas = document.getElementById('ventanas');
 	el.luna = document.getElementById('lunaBox');
-	el.luna.style.animation = 'luna 96s infinite linear';
 	
 	if(!el.mobile){
 		const parallax = new Parallax(el.fondos);
 		el.ventanas.style.animation = 'ventanas 4s infinite ease-in-out alternate';
-		
+		el.luna.style.animation = 'luna 96s infinite linear';
 	} else{
 		el.luna.style.transform = 'rotate(24deg)';
 	}
