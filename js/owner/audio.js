@@ -1,14 +1,14 @@
-const ambiente = new Audio('audios/juegoAmbiente.mp3');
-ambiente.loop = true;
-ambiente.controls = false;
-ambiente.volume = 0.4;
-function audioRun(accion=''){
-	if(!control.audio){ return false; }
-	if(accion !=''){ ambiente.pause(); return true; };
-	// ambiente.addEventListener("canplaythrough", event => {
-		if(ambiente.paused){ ambiente.play(); }
-	// });
-}
+// const ambiente = new Audio('audios/juegoAmbiente.mp3');
+// ambiente.loop = true;
+// ambiente.controls = false;
+// ambiente.volume = 0.4;
+// function audioRun(accion=''){
+// 	if(!control.audio){ return false; }
+// 	if(accion !=''){ ambiente.pause(); return true; };
+// 	// ambiente.addEventListener("canplaythrough", event => {
+// 		if(ambiente.paused){ ambiente.play(); }
+// 	// });
+// }
 
 const sonCorrect = new Audio('audios/acierto.mp3');
 sonCorrect.loop = false;
