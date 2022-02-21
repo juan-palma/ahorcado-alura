@@ -484,7 +484,7 @@ function categoria(){
 	return true;
 }
 function showOpciones(e){
-	audioRun();
+	//audioRun();
 	if(this.estado == 'on'){
 		el.boxOpciones.classList.add('show');
 		this.classList.add('active');
@@ -540,9 +540,9 @@ function audio(){
 	this.classList.toggle('on');
 	if(this.classList.contains('on')){
 		control.audio = true;
-		audioRun();
+		//audioRun();
 	} else{
-		audioRun('stop');
+		//audioRun('stop');
 		control.audio = false;
 	}
 	
