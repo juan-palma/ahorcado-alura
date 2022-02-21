@@ -24,5 +24,7 @@ espero que les guste :)
 ## Un poco de mi en lo laboral:
 ### Redes Sociales:
 Diseño grafico - [Instagram](https://www.instagram.com/id.a_libre/)
+
 19.75 Studio: Fotografia Social - [web](https://1975studio.com)
+
 Obscuro Placer: Fotografia Erotica - [web](https:obscuroplacer.com)
