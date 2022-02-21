@@ -38,14 +38,14 @@ function humanoChiflar(){
 	humanoTiempos = 1080;
 	if(humanoSeguir){
 		humano.playSegments([65,92], true);
-		setTimeout(()=>{ audioChiflido(); }, 150);
+		//setTimeout(()=>{ audioChiflido(); }, 150);
 	}
 }
 function humanoAdmiracion(){
 	humanoTiempos = 3160;
 	if(humanoSeguir){
 		humano.playSegments([110,189], true);
-		setTimeout(()=>{ audioAdmiracion(); }, 240);
+		//setTimeout(()=>{ audioAdmiracion(); }, 240);
 	}
 }
 function humanoPanico(){

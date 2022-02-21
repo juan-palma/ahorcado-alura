@@ -42,7 +42,7 @@ function ovniSuccion(){
 	ovni.removeEventListener('complete', ovniComplete);
 	ovni.playSegments([225,275], true);
 	setTimeout(()=>{ audioSuccion(); }, 80);
-	setTimeout(()=>{ audioPartida(); }, 1600);
+	//setTimeout(()=>{ audioPartida(); }, 1600);
 	//setTimeout(()=>{ audioOvni('stop'); }, 850);
 }
 function ovniExplota(){
