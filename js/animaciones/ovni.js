@@ -5,7 +5,7 @@ let ovniAccion = false;
 let ovniTiempos = "";
 let ovniSeguir = true;
 let ovniTarea = "";
-let ovniDealy = 1;
+let ovniDealy = 2000;
 function ovniEjecutor(){
 	if(!ovniSeguir){return false;}
 	ovniStatus = true;
