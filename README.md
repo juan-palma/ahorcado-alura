@@ -1,7 +1,7 @@
 Oracle Alura Reto 2 - Ahorcado - Logica de programación
 ===================
 
-![Encriptador](img/facebook_web_img_article.jpg)
+![Ahorcado](img/facebook_web_img_article.jpg)
 ### Ver el sitio web:
 https://ahorcado.idalibre.com
 
