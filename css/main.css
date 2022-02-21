@@ -833,10 +833,12 @@ input[type="button"]:hover{
 	#arbolesfrente img{
 		margin-bottom: -1%;
 		bottom: -1%;
+		position: initial;
 	}
 	#escenario img{
 		margin-bottom: -1%;
 		bottom: 1%;
+		position: initial;
 	}
 
 #gifs, #fondos{
@@ -866,6 +868,9 @@ input[type="button"]:hover{
 		}
 	#arbolesFondo {
 		filter: blur(2px);
+	}
+	#arbolesFondo img{
+		position: initial;
 	}
 	#animFLama {
 		height: 13vh;
