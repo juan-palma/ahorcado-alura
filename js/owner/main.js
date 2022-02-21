@@ -641,20 +641,19 @@ function iniciar(){
 	el.btnAudio.addEventListener('click', audio);
 	
 	el.fondos = document.getElementById('fondos');
-	if(!el.mobile){ const parallax = new Parallax(el.fondos); }
-	
+	el.ventanas = document.getElementById('ventanas');
 	el.luna = document.getElementById('lunaBox');
+	el.luna.style.animation = 'luna 96s infinite linear';
+	
 	if(!el.mobile){
-		el.luna.style.animation = 'luna 96s infinite linear';
+		const parallax = new Parallax(el.fondos);
+		el.ventanas.style.animation = 'ventanas 4s infinite ease-in-out alternate';
+		
 	} else{
 		el.luna.style.transform = 'rotate(24deg)';
 	}
-	el.ventanas = document.querySelectorAll('.ventana');
-	el.ventanas.forEach((v)=>{
-		if(!el.mobile){
-			v.style.animation = 'ventanas 4s infinite ease-in-out alternate';
-		}
-	});
+	
+	
 	el.circuloCarga = document.getElementById('loadGif');
 	el.preloaOculto = document.getElementById('preloadOculto')
 	precarga();

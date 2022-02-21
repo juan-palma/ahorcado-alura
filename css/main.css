@@ -825,20 +825,15 @@ input[type="button"]:hover{
 }
 	.fullscreen img{
 		width: 104%;
-		height: 100%;
+		height: 104%;
 		object-fit: cover;
+		object-position: center;
 		left: -2%;
-		position: relative;
+		top: -2%;
+		position: absolute;
 	}
 	#arbolesfrente img{
-		margin-bottom: -1%;
-		bottom: -1%;
-		position: initial;
-	}
-	#escenario img{
-		margin-bottom: -1%;
-		bottom: 1%;
-		position: initial;
+		top: 0%;
 	}
 
 #gifs, #fondos{
@@ -869,9 +864,9 @@ input[type="button"]:hover{
 	#arbolesFondo {
 		filter: blur(2px);
 	}
-	#arbolesFondo img{
-		position: initial;
-	}
+		#arbolesFondo img{
+			top: -1%;
+		}
 	#animFLama {
 		height: 13vh;
 		position: absolute;
@@ -951,8 +946,8 @@ input[type="button"]:hover{
 		position: absolute;
 		top: 49%;
 		left: 50%;
-		margin-top: 23.3vh;
-		margin-left: 14.4vh;
+		margin-top: 25.2vh;
+		margin-left: 15.1vh;
 	}
 		.ventana {
 			width: 1.1vh;
@@ -1284,7 +1279,7 @@ input[type="button"]:hover{
 
 @media (min-aspect-ratio: 8/5) {
 	#ventanas {
-		margin-top: 15.1vw;
+		margin-top: 15.7vw;
 		margin-left: 9.3vw;
 	}
 		.ventana {
