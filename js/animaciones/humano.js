@@ -23,10 +23,12 @@ function enComplete(){
 function humanoClear(){
 	humano.removeEventListener('complete', enComplete);
 }
+function humanoAdd(){
+	humano.addEventListener('complete', enComplete);
+}
 function humanoRun(){
 	humano.playSegments([0,33], true);
 	humanoTarea = humanoBaila;
-	humano.addEventListener('complete', enComplete);
 }
 function humanoBaila(){
 	humanoTiempos = 920;
@@ -63,20 +65,16 @@ function humanoResiste(){
 }
 function humanoSuccion(){
 	humanoTiempos = 1400;
-	humano.removeEventListener('complete', enComplete);
 	humano.playSegments([411,446], true);
 	setTimeout(()=>{ audioSuccion(); }, 20);
 }
 function humanoPoder(){
 	humanoTiempos = 4400;
-	humano.removeEventListener('complete', enComplete);
 	humano.playSegments([455,565], true);
 	setTimeout(()=>{ audioPoder(); }, 2600);
-	humano.addEventListener('complete', humanoReposo);
 }
 function humanoReposo(){
 	humanoTiempos = 200;
-	humano.removeEventListener('complete', humanoReposo);
 	humano.playSegments([565,570], true);
 }
 
