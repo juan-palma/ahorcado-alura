@@ -1055,10 +1055,10 @@ input[type="button"]:hover{
 			object-fit: contain;
 			transform: scale(0.8) !important;
 			transition: all 1.4s ease-in-out;
-			animation: ovni2 4s infinite ease-in-out alternate;
+			/* animation: ovni2 4s infinite ease-in-out alternate; */
 		}
 		#ovni canvas.flotar{
-			animation: ovni2 4s infinite ease-in-out alternate;
+			/* animation: ovni2 4s infinite ease-in-out alternate; */
 		}
 	#humano {
 		width: 10vh;
@@ -1119,7 +1119,7 @@ input[type="button"]:hover{
 	left:0px;
 	z-index: 0;
 }
-	canvas{
+	#canvas canvas{
 		position: absolute;
 		display: block;
 	}
