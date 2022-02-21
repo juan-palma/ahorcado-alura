@@ -4,7 +4,7 @@ ambiente.controls = false;
 ambiente.volume = 0.4;
 function audioRun(accion=''){
 	if(!control.audio){ return false; }
-	if(accion !=''){ ambiente.pause(); console.log('señal'); return true; };
+	if(accion !=''){ ambiente.pause(); return true; };
 	// ambiente.addEventListener("canplaythrough", event => {
 		if(ambiente.paused){ ambiente.play(); }
 	// });
