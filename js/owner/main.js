@@ -265,7 +265,6 @@ function animaciones(fin=""){
 								img.src = "img/msnPerdio.webp";
 								img.onload = function(){ this.classList.add('activo'); }
 								el.perdio.appendChild(img);
-								destelloToggle('off', '#f00');
 								el.btnPlay.style.display = "block";	
 							}, 3600);
 						}, 1000);
@@ -310,6 +309,7 @@ function resultado(estado){
 	control.resultado = estado;
 	control.palabraJugarA = [];
 	control.palabraJugar = "";
+	destelloToggle('off', '#f00');
 	offTeclado();
 	animaciones(estado);
 }
@@ -429,8 +429,8 @@ function onTeclado(){
 			teclas.forEach(function(t){
 				t.key = t.id;
 				t.addEventListener(btnPlayEvent, teclado);
-				t.addEventListener('touchend', (e) => t.classList.remove('on'));
-				t.addEventListener('touchstart', (e) => t.classList.add('on'));
+				t.addEventListener('touchend', (e) => t.classList.remove('on'), {passive: true});
+				t.addEventListener('touchstart', (e) => t.classList.add('on'), {passive: true});
 			});
 			el.teclado.classList.add('on');
 		}

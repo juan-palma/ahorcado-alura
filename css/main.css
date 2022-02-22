@@ -1057,9 +1057,9 @@ input[type="button"]:hover{
 			transition: all 1.4s ease-in-out;
 			animation: ovni2 4s infinite ease-in-out alternate;
 		}
-		#ovni canvas.flotar{
-			/* animation: ovni2 4s infinite ease-in-out alternate; */
-		}
+		/* #ovni canvas.flotar{
+			 animation: ovni2 4s infinite ease-in-out alternate; 
+		} */
 	#humano {
 		width: 10vh;
 		height: 10vh;
