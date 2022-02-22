@@ -238,7 +238,6 @@ function animaciones(fin=""){
 				dibujar({d:"lineas", m:{x:65, y:45,}, l:[{lx:80, ly:50},{lx:95, ly:45}]});
 			break;
 			case 6:
-				console.log('case 6');
 				destelloToggle('on', '#f00');
 				dibujar({d:"lineas", color:{trazo:"#f00"}, m:{x:77, y:20,}, l:[{lx:72, ly:25}]});
 				dibujar({d:"lineas", color:{trazo:"#f00"}, m:{x:77, y:25,}, l:[{lx:72, ly:20}]});
@@ -491,7 +490,7 @@ function categoria(){
 	return true;
 }
 function showOpciones(e){
-	audioRun();
+	//audioRun();
 	if(this.estado == 'on'){
 		el.boxOpciones.classList.add('show');
 		this.classList.add('active');

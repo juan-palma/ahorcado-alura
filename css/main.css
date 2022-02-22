@@ -1071,7 +1071,7 @@ input[type="button"]:hover{
 		margin-left: 11.4vh;
 		transition: all 0.6s ease-in-out;
 	}
-		#humano canvas{
+		#humano svg{
 			width: 100%;
 			height: 100%;
 			position: relative;
@@ -1082,7 +1082,7 @@ input[type="button"]:hover{
 			opacity: 0;
 			transition: all 1.3s ease-in-out;
 		}
-		#humano.p1 canvas{
+		#humano.p1 svg{
 			opacity: 1;
 			left: -148%;
     		top: -14%;
@@ -1099,13 +1099,13 @@ input[type="button"]:hover{
 				top: -133%;
 			}
 		}
-		#humano.p5 canvas{
+		#humano.p5 svg{
 			left: -158%;
     		top: -133%;
 			transform: rotate(25deg) !important;
 			animation: humanoP5 4s infinite 1.2s ease-in-out alternate;
 		}
-		#humano.p6 canvas{
+		#humano.p6 svg{
 			transform: rotate(80deg) !important;
 		}
 #canvas{

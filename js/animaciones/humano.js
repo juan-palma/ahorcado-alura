@@ -54,7 +54,7 @@ function humanoPanico(){
 	humanoTiempos = 2600;
 	if(humanoSeguir){
 		humano.playSegments([200,265], true);
-		setTimeout(()=>{ audioPanico(); }, 20);
+		//setTimeout(()=>{ audioPanico(); }, 20);
 	}
 }
 function humanoResiste(){
@@ -66,7 +66,7 @@ function humanoResiste(){
 function humanoSuccion(){
 	humanoTiempos = 1400;
 	humano.playSegments([411,446], true);
-	setTimeout(()=>{ audioSuccion(); }, 20);
+	//setTimeout(()=>{ audioSuccion(); }, 20);
 }
 function humanoPoder(){
 	humanoTiempos = 4400;
@@ -82,7 +82,7 @@ function humanoReposo(){
 humano = bodymovin.loadAnimation({
   container: document.getElementById('humano'),
   path: 'js/animaciones/humano.json',
-  renderer: 'canvas',
+  renderer: 'svg',
   loop: false,
   autoplay: false,
   name: "humano"

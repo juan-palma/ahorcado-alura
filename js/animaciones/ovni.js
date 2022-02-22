@@ -33,7 +33,7 @@ function ovniRun(){
 function ovniChispas(){
 	if(ovniSeguir){
 		ovni.playSegments([75,130], true);
-		setTimeout(()=>{ audioOvni(); }, 20);
+		//setTimeout(()=>{ audioOvni(); }, 20);
 	}
 }
 function ovniRayo(){
@@ -44,8 +44,8 @@ function ovniRayo(){
 function ovniSuccion(){
 	ovni.playSegments([225,275], true);
 	setTimeout(()=>{ audioSuccion(); }, 80);
-	setTimeout(()=>{ audioPartida(); }, 1600);
-	setTimeout(()=>{ audioOvni('stop'); }, 850);
+	//setTimeout(()=>{ audioPartida(); }, 1600);
+	//setTimeout(()=>{ audioOvni('stop'); }, 850);
 }
 function ovniExplota(){
 	ovni.playSegments([300,337], true);
