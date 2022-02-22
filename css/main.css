@@ -1014,7 +1014,7 @@ input[type="button"]:hover{
 		margin-top: -35vh;
 		opacity: 1;
 	}
-		#ovni.p2 canvas{
+		#ovni.p2 svg{
 			transform: scale(0.3) !important;
 		}
 	#ovni.p1 {
@@ -1024,7 +1024,7 @@ input[type="button"]:hover{
     	margin-top: -51vh;
     	opacity: 1;
 	}
-		#ovni.p1 canvas{
+		#ovni.p1 svg{
 			transform: scale(0.1) !important;
 		}
 	#ovni.p0 {
@@ -1034,7 +1034,7 @@ input[type="button"]:hover{
     	margin-top: -100vh;
     	opacity: 1;
 	}
-		#ovni.p0 canvas{
+		#ovni.p0 svg{
 			transform: scale(0.1) !important;
 		}
 		@keyframes ovni2{
@@ -1048,7 +1048,7 @@ input[type="button"]:hover{
 				top: 0px;
 			}
 		}
-		#ovni canvas{
+		#ovni svg{
 			width: 100%;
 			height: 100%;
 			position: relative;
@@ -1076,8 +1076,8 @@ input[type="button"]:hover{
 			height: 100%;
 			position: relative;
 			object-fit: contain;
-			left: 0%;
-			top: 0%;
+			left: 32%;
+			top: 26%;
 			transform: scale(0.5);
 			opacity: 0;
 			transition: all 1.3s ease-in-out;
